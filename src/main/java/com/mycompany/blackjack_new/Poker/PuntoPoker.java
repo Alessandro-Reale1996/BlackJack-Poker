@@ -131,19 +131,33 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
         this.cartalta = mano.getMano().get(mano.getMano().size()-1);
     }
     
-    private void cartaAltaPunto(ArrayList<ArrayList<Carta>> VSCSC)
+    private void cartaAltaPunto(ArrayList<ArrayList<Carta>> VSCSC, int valore)
     {
         if (!VSCSC.isEmpty())
         {
-            Carta carta1 = VSCSC.get(0).get(0);
-            Carta carta2 = VSCSC.get(VSCSC.size()-1).get(1);
-            if (carta1.getNumero()>carta2.getNumero())
+            if(valore != 5)
             {
-                this.cartaaltapunto=carta1;
+                Carta carta1 = VSCSC.get(0).get(0);
+                Carta carta2 = VSCSC.get(VSCSC.size()-1).get(1);
+                if (carta1.getNumero()>carta2.getNumero())
+                {
+                    this.cartaaltapunto=carta1;
+                }
+                else
+                {
+                    this.cartaaltapunto = carta2;
+                }
             }
-            else
+            else if (valore == 5)
             {
-                this.cartaaltapunto = carta2;
+                if(VSCSC.get(0).get(1).equals(VSCSC.get(1).get(0)))
+                {
+                    this.cartaaltapunto = VSCSC.get(0).get(0);
+                }
+                else
+                {
+                    this.cartaaltapunto = VSCSC.get(VSCSC.size()-1).get(1);
+                }
             }
         }
         
