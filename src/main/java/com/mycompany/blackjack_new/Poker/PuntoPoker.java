@@ -131,17 +131,12 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
         this.cartalta = mano.getMano().get(mano.getMano().size()-1);
     }
     
-    private void cartaAltaPunto(ArrayList<ArrayList<Carta>> VSCSC, int valore)
+    private void cartaAltaPunto(ArrayList<ArrayList<Carta>> VSCSC)
     {
-        ArrayList<Carta> templist = new ArrayList<>();
-        if (valore != 5 || valore != 2)
-        {
-         this.cartaaltapunto = VSCSC.get(0).get(0);
-        }
-        else if(valore == 2)
+        if (!VSCSC.isEmpty())
         {
             Carta carta1 = VSCSC.get(0).get(0);
-            Carta carta2 = VSCSC.get(1).get(0);
+            Carta carta2 = VSCSC.get(VSCSC.size()-1).get(1);
             if (carta1.getNumero()>carta2.getNumero())
             {
                 this.cartaaltapunto=carta1;
@@ -151,7 +146,7 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
                 this.cartaaltapunto = carta2;
             }
         }
-        //TODO: fare l'"else if(valore ==5)" del Tris
+        
         
     }
 
