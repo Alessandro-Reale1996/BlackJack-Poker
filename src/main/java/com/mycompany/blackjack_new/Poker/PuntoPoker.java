@@ -7,6 +7,7 @@ package com.mycompany.blackjack_new.Poker;
 import com.mycompany.blackjack_new.Carta;
 import com.mycompany.blackjack_new.Mano;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -24,6 +25,10 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
 
     public Carta getCartalta() {
         return cartalta;
+    }
+
+    public Carta getCartaaltapunto() {
+        return cartaaltapunto;
     }
 
     
@@ -127,8 +132,39 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
         return retvalue;
     }
     
-    private void cartaAlta(Mano mano){
+    private void cartaAlta(Mano mano, ArrayList<ArrayList<Carta>> VSCSC)
+    {
+        if(this.cartaaltapunto == null)
+        {
         this.cartalta = mano.getMano().get(mano.getMano().size()-1);
+        }
+        else
+        {
+            ArrayList<Carta> templist = new ArrayList<>();
+            for (ArrayList<Carta> list : VSCSC)
+            {
+                for(int i=0; i<list.size();i++)
+                {
+                    templist.add(list.get(i));
+                }
+            }
+            ArrayList<Carta> templist2 =  new ArrayList<>();
+            for(Carta carta : mano.getMano())
+            {
+                for(int i=0; i<templist.size();i++)
+                {
+                    if(carta.getNumero()!= templist.get(i).getNumero())
+                    {
+                        templist2.add(carta);
+                    }
+                }
+            }
+            Collections.sort(templist2);
+            this.cartalta= templist2.get(templist2.size()-1);
+            
+            
+        }
+        
     }
     
     private void cartaAltaPunto(ArrayList<ArrayList<Carta>> VSCSC, int valore)
@@ -209,7 +245,11 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
             this.valore = 1;
         }
         
-        cartaAlta(mano);
+        cartaAltaPunto(verificaSeCiSonoCoppie, this.valore);
+        
+        cartaAlta(mano,verificaSeCiSonoCoppie);
+        
+        
         
     }
     

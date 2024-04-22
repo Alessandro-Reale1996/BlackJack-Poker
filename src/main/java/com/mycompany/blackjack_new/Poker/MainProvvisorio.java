@@ -17,15 +17,19 @@ public class MainProvvisorio {
         public static void main(String[] args)
     {
         
-        Mazzo mazzo = Mazzo.popolaMazzo();
+        Carta carta1 = new Carta(false, "Cuori", 2);
+        Carta carta2 = new Carta(false, "Quadri", 13);
+        Carta carta3 = new Carta(false, "Fiori", 1);
+        Carta carta4 = new Carta(false, "Picche", 4);
+        Carta carta5 = new Carta(false, "Cuori", 13);
+        
         Mano mano = new Mano();
         
-        for(int i=0; i<5; i++)
-        {
-            Carta carta = mazzo.estraiCarta(mazzo);
-            mano.addCartaAsso(carta, mano);
-        }
-
+        mano.addCartaAsso(carta1, mano);
+        mano.addCartaAsso(carta2, mano);
+        mano.addCartaAsso(carta3, mano);
+        mano.addCartaAsso(carta4, mano);
+        mano.addCartaAsso(carta5, mano);
         
         mano.mostraMano();
         
@@ -42,6 +46,9 @@ public class MainProvvisorio {
         
         System.out.println("\ncarta alta");
         System.out.println(p.getCartalta());
+        
+        System.out.println("\ncartaaltapunto");
+        System.out.println(p.getCartaaltapunto());
                 
        
     }
