@@ -7,6 +7,7 @@ package com.mycompany.blackjack_new.Poker;
 import com.mycompany.blackjack_new.Carta;
 import com.mycompany.blackjack_new.Mano;
 import com.mycompany.blackjack_new.Mazzo;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,39 +18,42 @@ public class MainProvvisorio {
         public static void main(String[] args)
     {
         
-        Carta carta1 = new Carta(false, "Cuori", 2);
-        Carta carta2 = new Carta(false, "Quadri", 13);
-        Carta carta3 = new Carta(false, "Fiori", 1);
-        Carta carta4 = new Carta(false, "Picche", 4);
-        Carta carta5 = new Carta(false, "Cuori", 13);
+        Mazzo mazzo = Mazzo.popolaMazzo();
+        Mano mano1 = new Mano();
+        Mano mano2 = new Mano();
         
-        Mano mano = new Mano();
+        for (int i=0;i<5;i++)
+        {
+            mano1.addCartaAsso(mazzo.estraiCarta(mazzo),mano1);
+            mano2.addCartaAsso(mazzo.estraiCarta(mazzo), mano2);
+        }
         
-        mano.addCartaAsso(carta1, mano);
-        mano.addCartaAsso(carta2, mano);
-        mano.addCartaAsso(carta3, mano);
-        mano.addCartaAsso(carta4, mano);
-        mano.addCartaAsso(carta5, mano);
+        System.out.println("\nMano1");
+        mano1.mostraMano();
+        System.out.println("\nMano2");
+        mano2.mostraMano();
         
-        mano.mostraMano();
+        PuntoPoker p1 = new PuntoPoker();
+        PuntoPoker p2 = new PuntoPoker();
         
-        mano.ordinaMano();
+        p1.distinguiPunti(mano1);
+        p2.distinguiPunti(mano2);
+        
+        Giocatore g1 =new Giocatore("Player1",mano1,p1);
+        Giocatore g2 = new Giocatore("Palyer2",mano2,p2);
+        
+        ConfrontaPunteggio CP = new ConfrontaPunteggio();
+        
+        CP.inserisciDueGiocatori(g1, g2);
+        
+        Giocatore giocatoreVincente = CP.trovaGiocatoreVincente(CP);
+        
+        System.out.println(giocatoreVincente.getNomegiocatore());
         
         
-        PuntoPoker p=new PuntoPoker();
         
         
-        System.out.println("\nIl punteggio");
         
-        p.distinguiPunti( mano);
-        System.out.println(p.getValore());
-        
-        System.out.println("\ncarta alta");
-        System.out.println(p.getCartalta());
-        
-        System.out.println("\ncartaaltapunto");
-        System.out.println(p.getCartaaltapunto());
-                
        
     }
     

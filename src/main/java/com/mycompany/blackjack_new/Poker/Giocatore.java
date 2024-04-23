@@ -10,16 +10,15 @@ import com.mycompany.blackjack_new.Mano;
  *
  * @author gianf
  */
-public class Giocatore {
+public class Giocatore implements Comparable<Giocatore> {
     protected String nomegiocatore;
     protected Mano mano;
     protected PuntoPoker puntoPoker;
     protected int ammontale;
 
-    public Giocatore() {
-    }
+   
 
-    public Giocatore(String nomegiocatore,Mano mano, PuntoPoker puntoPoker, int ammontale) {
+    public Giocatore(String nomegiocatore,Mano mano, PuntoPoker puntoPoker) {
         this.nomegiocatore = nomegiocatore;
         this.mano = mano;
         this.puntoPoker = puntoPoker;
@@ -40,6 +39,20 @@ public class Giocatore {
 
     public int getAmmontale() {
         return ammontale;
+    }
+    
+    
+
+    @Override
+    public int compareTo(Giocatore t) {
+        int r = Integer.compare(this.puntoPoker.getCartaaltapunto().getNumero(), t.getPuntoPoker().getCartaaltapunto().getNumero());
+        
+        if (r==0)
+        {
+           r = Integer.compare(this.puntoPoker.getCartalta().getNumero(), t.getPuntoPoker().getCartalta().getNumero());
+        }
+        
+        return r;
     }
     
     

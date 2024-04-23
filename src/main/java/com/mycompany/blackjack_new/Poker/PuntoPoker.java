@@ -34,6 +34,7 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
     
     
     public PuntoPoker() {
+        this.cartaaltapunto= new Carta(false,"a",0);
     }
 
     
@@ -151,13 +152,12 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
             ArrayList<Carta> templist2 =  new ArrayList<>();
             for(Carta carta : mano.getMano())
             {
-                for(int i=0; i<templist.size();i++)
+                
+                if(!templist.contains(carta))
                 {
-                    if(carta.getNumero()!= templist.get(i).getNumero())
-                    {
-                        templist2.add(carta);
-                    }
+                    templist2.add(carta);
                 }
+                
             }
             Collections.sort(templist2);
             this.cartalta= templist2.get(templist2.size()-1);
@@ -243,6 +243,10 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
         else if (verificaSeCiSonoCoppie.size() == 1)
         {
             this.valore = 1;
+        }
+        else
+        {
+            this.valore = 0;
         }
         
         cartaAltaPunto(verificaSeCiSonoCoppie, this.valore);
