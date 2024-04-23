@@ -2,11 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.blackjack_new.Poker;
+package MainProvvisori;
 
 import com.mycompany.blackjack_new.Carta;
 import com.mycompany.blackjack_new.Mano;
 import com.mycompany.blackjack_new.Mazzo;
+import com.mycompany.blackjack_new.Poker.ConfrontaPunteggio;
+import com.mycompany.blackjack_new.Poker.Giocatore;
+import com.mycompany.blackjack_new.Poker.PuntoPoker;
 import java.util.ArrayList;
 
 /**

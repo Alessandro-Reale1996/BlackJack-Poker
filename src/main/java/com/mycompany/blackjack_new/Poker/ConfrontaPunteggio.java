@@ -23,7 +23,13 @@ public class ConfrontaPunteggio {
     public ConfrontaPunteggio() {
         this.confrontapunteggio = new ArrayList<>();
     }
+    //TEMP
+    public void inserisciUnGiocatori (Giocatore g1)
+    {
+        this.confrontapunteggio.add(g1);    
+    }
     
+    //TEMP
     public void inserisciDueGiocatori (Giocatore g1,Giocatore g2)
     {
         this.confrontapunteggio.add(g1);
@@ -43,17 +49,13 @@ public class ConfrontaPunteggio {
     
     private Giocatore trovaPuntoPiùAlto (ConfrontaPunteggio cp)
     {
-        Giocatore retvalue = null;
+        Giocatore retvalue = cp.getConfrontapunteggio().get(0);
         
         for(int i=0;i<cp.confrontapunteggio.size()-1;i++)
         {
             if(cp.confrontapunteggio.get(i).getPuntoPoker().getValore()>cp.confrontapunteggio.get(i+1).getPuntoPoker().getValore())
             {
                 retvalue = cp.confrontapunteggio.get(i);
-            }
-            else
-            {
-                retvalue = cp.confrontapunteggio.get(i+1);
             }
         }
         
@@ -76,26 +78,28 @@ public class ConfrontaPunteggio {
     
     private Giocatore confrontaGiocatoriStessoValore (ArrayList<Giocatore> GSV)
     {
-        Giocatore retvalue = null;
+        Giocatore retvalue = GSV.get(0);
         
-        
-        for (int i=0;i<GSV.size()-1;i++)
+        for (int i=0;i<GSV.size();i++)
         {
-            if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()>GSV.get(i+1).getPuntoPoker().getCartaaltapunto().getNumero())
+            if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()>retvalue.getPuntoPoker().getCartaaltapunto().getNumero())
             {
                 retvalue = GSV.get(i);
             }
             else
             {
-              if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()==GSV.get(+1).getPuntoPoker().getCartaaltapunto().getNumero())
+              if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()==retvalue.getPuntoPoker().getCartaaltapunto().getNumero())
               {
-                  if (GSV.get(i).getPuntoPoker().getCartalta().getNumero()>GSV.get(i+1).getPuntoPoker().getCartalta().getNumero())
+                  Collections.sort(GSV);
+                  if (GSV.get(i).getPuntoPoker().getCartalta().getNumero()>retvalue.getPuntoPoker().getCartalta().getNumero())
                   {
                       retvalue = GSV.get(i);
                   }
                   else
-                  {
-                      retvalue = GSV.get(i+1);
+                  { 
+                      Giocatore pari = new Giocatore();
+                      pari.setNomegiocatore("Pari");
+                      retvalue = pari;
                   }
               }
             }
@@ -106,7 +110,7 @@ public class ConfrontaPunteggio {
     
     public Giocatore trovaGiocatoreVincente(ConfrontaPunteggio CP)
     {
-        Giocatore retvalue = null;
+        Giocatore retvalue;
         
         Giocatore giocatorePuntoAlto = CP.trovaPuntoPiùAlto(CP);
         

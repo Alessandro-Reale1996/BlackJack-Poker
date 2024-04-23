@@ -135,7 +135,7 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
     
     private void cartaAlta(Mano mano, ArrayList<ArrayList<Carta>> VSCSC)
     {
-        if(this.cartaaltapunto == null)
+        if(this.cartaaltapunto.getNumero() == 0)
         {
         this.cartalta = mano.getMano().get(mano.getMano().size()-1);
         }
@@ -204,6 +204,7 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
     
     public void distinguiPunti(Mano mano)
     {
+        mano.ordinaMano();
         ArrayList<ArrayList<Carta>> verificaSeCiSonoCoppie = verificaSeCiSonoCoppie(mano);
         
         if (verificaScalaRealeColore(mano))

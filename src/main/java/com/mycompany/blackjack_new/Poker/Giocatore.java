@@ -16,6 +16,9 @@ public class Giocatore implements Comparable<Giocatore> {
     protected PuntoPoker puntoPoker;
     protected int ammontale;
 
+    public Giocatore() {
+    }
+
    
 
     public Giocatore(String nomegiocatore,Mano mano, PuntoPoker puntoPoker) {
@@ -25,6 +28,13 @@ public class Giocatore implements Comparable<Giocatore> {
         this.ammontale = 100;
     }
 
+    public void setNomegiocatore(String nomegiocatore) {
+        this.nomegiocatore = nomegiocatore;
+    }
+
+    
+    
+    
     public PuntoPoker getPuntoPoker() {
         return puntoPoker;
     }
