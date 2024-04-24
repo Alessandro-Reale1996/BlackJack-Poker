@@ -51,9 +51,9 @@ public class ConfrontaPunteggio {
     {
         Giocatore retvalue = cp.getConfrontapunteggio().get(0);
         
-        for(int i=0;i<cp.confrontapunteggio.size()-1;i++)
+        for(int i=0;i<cp.confrontapunteggio.size();i++)
         {
-            if(cp.confrontapunteggio.get(i).getPuntoPoker().getValore()>cp.confrontapunteggio.get(i+1).getPuntoPoker().getValore())
+            if(cp.confrontapunteggio.get(i).getPuntoPoker().getValore()>retvalue.getPuntoPoker().getValore())
             {
                 retvalue = cp.confrontapunteggio.get(i);
             }
@@ -65,48 +65,123 @@ public class ConfrontaPunteggio {
     private ArrayList<Giocatore> giocatoriStessoValore (Giocatore giocatore,ConfrontaPunteggio cp)
     {
         ArrayList<Giocatore> retvalue = new ArrayList<>();
-        for(Giocatore g : cp.getConfrontapunteggio())
-        {
-             if(giocatore.getPuntoPoker().getValore()==g.getPuntoPoker().getValore())
+        
+        retvalue.add(giocatore);
+     
+            for(Giocatore g : cp.getConfrontapunteggio())
             {
-                retvalue.add(g);
+                    if(giocatore.getPuntoPoker().getValore()==g.getPuntoPoker().getValore())
+                   {
+                       retvalue.add(g);
+                   }
+            }
+        
+        
+        return retvalue;
+    }
+    
+    private Giocatore confrontaCartaAlta(ArrayList<Giocatore> GSV)
+    {
+        Giocatore retvalue = GSV.get(0);
+        
+        Collections.sort(GSV);
+        for (int i=0;i<GSV.size();i++)
+        {
+            if (GSV.get(i).getPuntoPoker().getCartalta().getNumero()>retvalue.getPuntoPoker().getCartalta().getNumero())
+            {
+                retvalue = GSV.get(i);
+            }
+            else
+            { 
+                Giocatore pari = new Giocatore();
+                pari.setNomegiocatore("Pari");
+                retvalue = pari;
+            }
+        }
+
+        return retvalue;
+    }
+    
+    private boolean verificaCiSiaPunto(ArrayList<Giocatore> GSV)
+    {
+        boolean retvalue = true;
+        
+        for(Giocatore giocatore : GSV)
+        {
+            if(giocatore.getPuntoPoker().getCartaaltapunto().getNumero() == 0)
+            {
+                retvalue = false;
+                break;
             }
         }
         
         return retvalue;
     }
     
-    private Giocatore confrontaGiocatoriStessoValore (ArrayList<Giocatore> GSV)
+    
+    /*private Giocatore confrontaGiocatoriStessoValore (ArrayList<Giocatore> GSV)
     {
         Giocatore retvalue = GSV.get(0);
         
-        for (int i=0;i<GSV.size();i++)
+        if(!GSV.isEmpty())
         {
-            if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()>retvalue.getPuntoPoker().getCartaaltapunto().getNumero())
+
+            for (int i=0;i<GSV.size();i++)
             {
-                retvalue = GSV.get(i);
-            }
-            else
-            {
-              if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()==retvalue.getPuntoPoker().getCartaaltapunto().getNumero())
-              {
-                  Collections.sort(GSV);
-                  if (GSV.get(i).getPuntoPoker().getCartalta().getNumero()>retvalue.getPuntoPoker().getCartalta().getNumero())
+                if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()>retvalue.getPuntoPoker().getCartaaltapunto().getNumero())
+                {
+                    retvalue = GSV.get(i);
+                }
+                else
+                {
+                  if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero()==retvalue.getPuntoPoker().getCartaaltapunto().getNumero())
                   {
-                      retvalue = GSV.get(i);
+                      Collections.sort(GSV);
+                      if (GSV.get(i).getPuntoPoker().getCartalta().getNumero()>retvalue.getPuntoPoker().getCartalta().getNumero())
+                      {
+                          retvalue = GSV.get(i);
+                      }
+                      else
+                      { 
+                          Giocatore pari = new Giocatore();
+                          pari.setNomegiocatore("Pari");
+                          retvalue = pari;
+                      }
                   }
-                  else
-                  { 
-                      Giocatore pari = new Giocatore();
-                      pari.setNomegiocatore("Pari");
-                      retvalue = pari;
-                  }
-              }
+                }
             }
+        }
+        else
+        {
+            retvalue = confrontaCartaAlta(GSV);
         }
         
         return retvalue;
+    }*/
+    
+    private Giocatore confrontaGiocatoriStessoValore(ArrayList<Giocatore> GSV) {
+    Giocatore retvalue = GSV.get(0);
+
+    if (!GSV.isEmpty()) {
+        for (int i = 0; i < GSV.size(); i++) {
+            if (GSV.get(i) != null && GSV.get(i).getPuntoPoker() != null && GSV.get(i).getPuntoPoker().getCartaaltapunto() != null &&
+                retvalue != null && retvalue.getPuntoPoker() != null && retvalue.getPuntoPoker().getCartaaltapunto() != null) {
+                if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero() > retvalue.getPuntoPoker().getCartaaltapunto().getNumero()) {
+                    retvalue = GSV.get(i);
+                } else if (GSV.get(i).getPuntoPoker().getCartaaltapunto().getNumero() == retvalue.getPuntoPoker().getCartaaltapunto().getNumero()) {
+                    Collections.sort(GSV); 
+                    if (GSV.get(i).compareTo(retvalue) > 0) {
+                        retvalue = GSV.get(i); 
+                    }
+                }
+            }
+        }
+    } else {
+        retvalue = confrontaCartaAlta(GSV);
     }
+
+    return retvalue;
+}
     
     public Giocatore trovaGiocatoreVincente(ConfrontaPunteggio CP)
     {

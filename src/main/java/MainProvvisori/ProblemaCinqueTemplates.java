@@ -15,18 +15,17 @@ import com.mycompany.blackjack_new.Poker.PuntoPoker;
  *
  * @author Siam1838
  */
-public class ProblemaCinque1 {
+public class ProblemaCinqueTemplates {
     
     public static void main(String[] args)
     {
         
-         // Creazione della mano 1
-        Mano mano1 = new Mano();
-        Carta carta1_1 = new Carta(false, "Picche", 9);
-        Carta carta1_2 = new Carta(false, "Cuori", 1); // Assumo che "Asso Cuori" sia Asso
-        Carta carta1_3 = new Carta(false, "Quadri", 11);
-        Carta carta1_4 = new Carta(false, "Cuori", 13);
-        Carta carta1_5 = new Carta(false, "Picche", 8);
+       Mano mano1 = new Mano();
+        Carta carta1_1 = new Carta(false, "Fiori", 9);
+        Carta carta1_2 = new Carta(false, "Quadri", 10);
+        Carta carta1_3 = new Carta(false, "Cuori", 12);
+        Carta carta1_4 = new Carta(false, "Quadri", 2);
+        Carta carta1_5 = new Carta(false, "Picche", 2);
 
         mano1.addCartaAsso(carta1_1, mano1);
         mano1.addCartaAsso(carta1_2, mano1);
@@ -36,11 +35,11 @@ public class ProblemaCinque1 {
 
         // Creazione della mano 2
         Mano mano2 = new Mano();
-        Carta carta2_1 = new Carta(false, "Quadri", 13);
-        Carta carta2_2 = new Carta(false, "Quadri", 12);
-        Carta carta2_3 = new Carta(false, "Fiori", 12);
-        Carta carta2_4 = new Carta(false, "Picche", 2);
-        Carta carta2_5 = new Carta(false, "Quadri", 3);
+        Carta carta2_1 = new Carta(false, "Fiori", 10);
+        Carta carta2_2 = new Carta(false, "Fiori", 7);
+        Carta carta2_3 = new Carta(false, "Cuori", 7);
+        Carta carta2_4 = new Carta(false, "Fiori", 1); // Assumo che "Asso Fiori" sia Asso
+        Carta carta2_5 = new Carta(false, "Cuori", 4);
 
         mano1.addCartaAsso(carta2_1, mano2);
         mano1.addCartaAsso(carta2_2, mano2);
@@ -50,11 +49,11 @@ public class ProblemaCinque1 {
 
         // Creazione della mano 3
         Mano mano3 = new Mano();
-        Carta carta3_1 = new Carta(false, "Picche", 10);
-        Carta carta3_2 = new Carta(false, "Picche", 13);
-        Carta carta3_3 = new Carta(false, "Quadri", 1); // Assumo che "Asso Quadri" sia Asso
-        Carta carta3_4 = new Carta(false, "Fiori", 2);
-        Carta carta3_5 = new Carta(false, "Fiori", 7);
+        Carta carta3_1 = new Carta(false, "Picche", 8);
+        Carta carta3_2 = new Carta(false, "Quadri", 12);
+        Carta carta3_3 = new Carta(false, "Picche", 13);
+        Carta carta3_4 = new Carta(false, "Fiori", 6);
+        Carta carta3_5 = new Carta(false, "Quadri", 5);
 
         mano1.addCartaAsso(carta3_1, mano3);
         mano1.addCartaAsso(carta3_2, mano3);
@@ -64,11 +63,11 @@ public class ProblemaCinque1 {
 
         // Creazione della mano 4
         Mano mano4 = new Mano();
-        Carta carta4_1 = new Carta(false, "Quadri", 7);
-        Carta carta4_2 = new Carta(false, "Fiori", 4);
-        Carta carta4_3 = new Carta(false, "Fiori", 6);
-        Carta carta4_4 = new Carta(false, "Quadri", 4);
-        Carta carta4_5 = new Carta(false, "Picche", 1); // Assumo che "Asso Picche" sia Asso
+        Carta carta4_1 = new Carta(false, "Fiori", 13);
+        Carta carta4_2 = new Carta(false, "Fiori", 5);
+        Carta carta4_3 = new Carta(false, "Cuori", 9);
+        Carta carta4_4 = new Carta(false, "Quadri", 6);
+        Carta carta4_5 = new Carta(false, "Picche", 3);
 
         mano1.addCartaAsso(carta4_1, mano4);
         mano1.addCartaAsso(carta4_2, mano4);
@@ -78,11 +77,11 @@ public class ProblemaCinque1 {
 
         // Creazione della mano 5
         Mano mano5 = new Mano();
-        Carta carta5_1 = new Carta(false, "Picche", 6);
-        Carta carta5_2 = new Carta(false, "Picche", 12);
-        Carta carta5_3 = new Carta(false, "Cuori", 5);
-        Carta carta5_4 = new Carta(false, "Quadri", 6);
-        Carta carta5_5 = new Carta(false, "Cuori", 9);
+        Carta carta5_1 = new Carta(false, "Picche", 10);
+        Carta carta5_2 = new Carta(false, "Cuori", 10);
+        Carta carta5_3 = new Carta(false, "Fiori", 2);
+        Carta carta5_4 = new Carta(false, "Fiori", 4);
+        Carta carta5_5 = new Carta(false, "Quadri", 1); // Assumo che "Asso Quadri" sia Asso
 
         mano1.addCartaAsso(carta5_1, mano5);
         mano1.addCartaAsso(carta5_2, mano5);

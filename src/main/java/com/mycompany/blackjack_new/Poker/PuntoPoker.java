@@ -34,7 +34,9 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
     
     
     public PuntoPoker() {
+        this.valore= 0;
         this.cartaaltapunto= new Carta(false,"a",0);
+        this.cartalta =new Carta(false,"a",0);
     }
 
     

@@ -20,15 +20,16 @@ public class MainProvvisorioGiocatoreTrovaValoreCartaltaCartaltapunto {
     {
         
       
-        Mano mano2 = new Mano();
+      
         
         
         // Creazione della mano 2
-        Carta carta2_1 = new Carta(false, "Picche", 11);
-        Carta carta2_2 = new Carta(false, "Quadri", 9);
-        Carta carta2_3 = new Carta(false, "Fiori", 11);
-        Carta carta2_4 = new Carta(false, "Quadri", 6);
-        Carta carta2_5 = new Carta(false, "Picche", 1);
+          Mano mano2 = new Mano();
+        Carta carta2_1 = new Carta(false, "Fiori", 10);
+        Carta carta2_2 = new Carta(false, "Fiori", 7);
+        Carta carta2_3 = new Carta(false, "Cuori", 7);
+        Carta carta2_4 = new Carta(false, "Fiori", 1); // Assumo che "Asso Fiori" sia Asso
+        Carta carta2_5 = new Carta(false, "Cuori", 4);
         
         mano2.addCartaAsso(carta2_1,mano2);
         mano2.addCartaAsso(carta2_2,mano2);
