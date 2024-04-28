@@ -6,6 +6,7 @@ package MainProvvisori;
 
 import com.mycompany.blackjack_new.Mano;
 import com.mycompany.blackjack_new.Mazzo;
+import com.mycompany.blackjack_new.Poker.CambiaCarte;
 import com.mycompany.blackjack_new.Poker.ConfrontaPunteggio;
 import com.mycompany.blackjack_new.Poker.Giocatore;
 import com.mycompany.blackjack_new.Poker.PuntoPoker;
@@ -68,6 +69,34 @@ public class CinqueGiocatori {
         Giocatore g4 = new Giocatore("Palyer4",mano4,p4);
         Giocatore g5 =new Giocatore("Player5",mano5,p5);
         
+        CambiaCarte cambiaCarte1 = new CambiaCarte();
+        CambiaCarte cambiaCarte2 = new CambiaCarte();
+        CambiaCarte cambiaCarte3 = new CambiaCarte();
+        CambiaCarte cambiaCarte4= new CambiaCarte();
+        CambiaCarte cambiaCarte5 = new CambiaCarte();
+        
+        cambiaCarte1.cambiaCarte(g1, mazzo);
+        cambiaCarte2.cambiaCarte(g2, mazzo);
+        cambiaCarte3.cambiaCarte(g3, mazzo);
+        cambiaCarte4.cambiaCarte(g4, mazzo);
+        cambiaCarte5.cambiaCarte(g5, mazzo);
+        
+         p1.distinguiPunti(mano1);
+        p2.distinguiPunti(mano2);
+        p3.distinguiPunti(mano3);
+        p4.distinguiPunti(mano4);
+        p5.distinguiPunti(mano5);
+        
+        System.out.println("\nMano1 C");
+        mano1.mostraMano();
+        System.out.println("\nMano2 C");
+        mano2.mostraMano();
+        System.out.println("\nMano3 C");
+        mano3.mostraMano();
+        System.out.println("\nMano4 C");
+        mano4.mostraMano();
+        System.out.println("\nMano5 C");
+        mano5.mostraMano();
         
         ConfrontaPunteggio CP = new ConfrontaPunteggio();
         

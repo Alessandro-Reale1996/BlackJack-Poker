@@ -50,6 +50,10 @@ public class Giocatore implements Comparable<Giocatore> {
     public int getAmmontale() {
         return ammontale;
     }
+
+    public void setMano(Mano mano) {
+        this.mano = mano;
+    }
     
     
 

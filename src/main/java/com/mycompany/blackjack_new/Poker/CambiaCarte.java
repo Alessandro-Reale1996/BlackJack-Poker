@@ -8,6 +8,7 @@ import com.mycompany.blackjack_new.Carta;
 import com.mycompany.blackjack_new.Mano;
 import com.mycompany.blackjack_new.Mazzo;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -28,13 +29,17 @@ public class CambiaCarte {
     public void cambiaCarte(Giocatore giocatore,Mazzo mazzo)
     {
         if(giocatore.getPuntoPoker().verificaSeCiSonoCoppie(giocatore.getMano()).isEmpty())
-        {
-            for(Carta carta : giocatore.getMano().getMano())
+        {   
+            ArrayList<Carta> carteDaRimuovere = new ArrayList<>();
+            for (Carta carta : giocatore.getMano().getMano()) {
+                carteDaRimuovere.add(carta);
+            }
+            for(Carta carta : carteDaRimuovere)
             {
-                giocatore.getMano().cambiaCarta(carta, giocatore.getMano(), mazzo);
+                giocatore.getMano().cambiaCarta(carta, mazzo);
             }
         }
-        else
+        else 
         {
             ArrayList<Carta> templist = new ArrayList<>();
             for (ArrayList<Carta> list : giocatore.getPuntoPoker().verificaSeCiSonoCoppie(giocatore.getMano()))
@@ -51,14 +56,14 @@ public class CambiaCarte {
                 {
                     templist2.add(carta);
                 }
-                
-            for(int i=0;i<templist2.size();i++)
-            {
-                cambiaCarte(giocatore, mazzo);
             }
-                
-            }
+              
             
+            for(Carta carta1 : templist2)
+            {
+                giocatore.getMano().cambiaCarta(carta1, mazzo);
+            }   
+          
         }
     }
 }

@@ -84,14 +84,14 @@ public class Mano {
         Collections.sort(mano); 
     }
      
-      public boolean cambiaCarta(Carta carta,Mano mano,Mazzo mazzo)
+      public boolean cambiaCarta(Carta carta,Mazzo mazzo)
     {
         boolean add = false;
                 
         try
         {
-        mano.getMano().remove(carta);
-        add = mano.getMano().add(mazzo.estraiCarta(mazzo));
+        this.mano.remove(carta);
+        add = this.mano.add(mazzo.estraiCarta(mazzo));
         }
         catch (Exception e)
         {
