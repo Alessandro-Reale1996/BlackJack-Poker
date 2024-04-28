@@ -5,6 +5,7 @@
 package com.mycompany.blackjack_new;
 
 import java.util.Scanner;
+import com.mycompany.blackjack_new.Poker.InputPoker;
 /**
  *
  * @author Siam1838
@@ -135,7 +136,8 @@ public class Input
     
     public void Poker()
     {
-        System.out.println("Hai chiamato Poker");
+       InputPoker inputpoker = new InputPoker();
+       inputpoker.poker();
     }
     
 }

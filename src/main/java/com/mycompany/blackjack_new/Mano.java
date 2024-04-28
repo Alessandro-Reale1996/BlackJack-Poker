@@ -51,14 +51,16 @@ public class Mano {
     }
     
    public void mostraMano() {
+       int i =0;
     for (Carta carta : mano) {
-        if (carta instanceof Asso) {
+        i++;
+        if (carta instanceof Asso) {           
             Asso asso = (Asso) carta;
-            System.out.println(asso.toString());
+            System.out.println(i+"."+" "+asso.toString());
         } else {
             if(carta != null)
             {
-            System.out.println(carta.toString());
+            System.out.println(i+"."+" "+carta.toString());
             }
             else
             {

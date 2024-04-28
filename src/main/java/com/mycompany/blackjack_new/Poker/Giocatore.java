@@ -68,10 +68,5 @@ public class Giocatore implements Comparable<Giocatore> {
         
         return r;
     }
-    
-    
-    
-    
-    
-    
+   
 }
