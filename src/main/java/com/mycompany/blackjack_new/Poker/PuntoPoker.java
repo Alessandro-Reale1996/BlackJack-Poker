@@ -6,7 +6,6 @@ package com.mycompany.blackjack_new.Poker;
 
 import com.mycompany.blackjack_new.Carta;
 import com.mycompany.blackjack_new.Mano;
-import com.mycompany.blackjack_new.Mazzo;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -277,22 +276,7 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
             }
                       
             return retvalue;
-        }  
-    
-    public boolean cambiaCarta(Carta carta,Mano mano,Mazzo mazzo)
-    {
-        boolean add = false;
-                
-        try
-        {
-        mano.getMano().remove(carta);
-        add = mano.getMano().add(mazzo.estraiCarta(mazzo));
         }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        return add;
-    }
 }
+    
+   

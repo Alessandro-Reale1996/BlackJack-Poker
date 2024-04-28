@@ -83,5 +83,23 @@ public class Mano {
      public void ordinaMano() {
         Collections.sort(mano); 
     }
+     
+      public boolean cambiaCarta(Carta carta,Mano mano,Mazzo mazzo)
+    {
+        boolean add = false;
+                
+        try
+        {
+        mano.getMano().remove(carta);
+        add = mano.getMano().add(mazzo.estraiCarta(mazzo));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return add;
+    }
+
  
 }
