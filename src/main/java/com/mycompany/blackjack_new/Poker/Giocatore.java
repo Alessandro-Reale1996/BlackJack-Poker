@@ -15,10 +15,17 @@ public class Giocatore implements Comparable<Giocatore> {
     protected Mano mano;
     protected PuntoPoker puntoPoker;
     protected int ammontale;
+    protected int rilancioGiocatore;
 
     public Giocatore() {
     }
 
+    public Giocatore(int ammontale) {
+        this.ammontale = ammontale;
+        this.rilancioGiocatore = 0;
+    }
+
+    
    
 
     public Giocatore(String nomegiocatore,Mano mano, PuntoPoker puntoPoker) {
@@ -54,6 +61,19 @@ public class Giocatore implements Comparable<Giocatore> {
     public void setMano(Mano mano) {
         this.mano = mano;
     }
+
+    public void setPuntoPoker(PuntoPoker puntoPoker) {
+        this.puntoPoker = puntoPoker;
+    }
+
+    public void setAmmontale(int ammontale) {
+        this.ammontale = ammontale;
+    }
+
+    public void setRilancioGiocatore(int rilancioGiocatore) {
+        this.rilancioGiocatore = rilancioGiocatore;
+    }
+    
     
     
 
@@ -69,4 +89,82 @@ public class Giocatore implements Comparable<Giocatore> {
         return r;
     }
    
+    //Creo il metodo per il rilancio automatizzato
+    public int rilancioAuto(Giocatore giocatore)
+    {
+        int retvalue = 0;
+        //creo uno switch, con una relazione punti(valore)- ammontale scommesso.
+        //TODO: creare uno switch diverso per ammontale disponibilie.
+        if(giocatore.getAmmontale()>75)
+        {
+            switch(giocatore.getPuntoPoker().getValore())
+            {
+
+                case 2:
+                   retvalue = giocatore.ammontale/10;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 3:
+                   retvalue = giocatore.ammontale/8;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 4:
+                   retvalue = giocatore.ammontale/8;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 5:
+                   retvalue = giocatore.ammontale/6;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 6:
+                   retvalue = giocatore.ammontale/6;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 7:
+                   retvalue = giocatore.ammontale/4;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 8:
+                   retvalue = giocatore.ammontale/2;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                default:
+                    
+            }
+        }
+        else if(giocatore.getAmmontale()>50)
+        {
+            switch(giocatore.getPuntoPoker().getValore())
+            {
+
+                case 3:
+                   retvalue = giocatore.ammontale/10;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 4:
+                   retvalue = giocatore.ammontale/10;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 5:
+                   retvalue = giocatore.ammontale/8;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 6:
+                   retvalue = giocatore.ammontale/6;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 7:
+                   retvalue = giocatore.ammontale/4;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                case 8:
+                   retvalue = giocatore.ammontale/2;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
+                default:
+                    
+            }
+        }
+        return retvalue;
+    }
 }

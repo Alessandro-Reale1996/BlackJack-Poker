@@ -66,7 +66,7 @@ public class CinqueGiocatori {
         Giocatore g1 =new Giocatore("Player1",mano1,p1);
         Giocatore g2 = new Giocatore("Palyer2",mano2,p2);
         Giocatore g3 =new Giocatore("Player3",mano3,p3);
-        Giocatore g4 = new Giocatore("Palyer4",mano4,p4);
+        Giocatore g4 = new Giocatore("Player4",mano4,p4);
         Giocatore g5 =new Giocatore("Player5",mano5,p5);
         
         CambiaCarte cambiaCarte1 = new CambiaCarte();

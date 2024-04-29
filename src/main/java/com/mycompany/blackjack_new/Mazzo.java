@@ -57,7 +57,7 @@ public class Mazzo{
           
           do
           {
-          Carta carta = this.mazzo.get(random.nextInt(0,this.mazzo.size()));
+          Carta carta = this.mazzo.get(random.nextInt(this.mazzo.size()));
           
               
             if (!carta.getVerificaCartaPescata())

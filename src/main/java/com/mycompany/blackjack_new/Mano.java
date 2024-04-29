@@ -72,12 +72,18 @@ public class Mano {
     
     public int sumMano()
     {
-     int retvalue = 0;
-     
-     for (Carta carta : mano)
-     {
-         retvalue = retvalue + carta.getNumero();
-     }
+        int retvalue = 0;
+
+        for (Carta carta : mano)
+        {      if(carta.getNumero()>10)
+                {
+                    retvalue = retvalue + 10;   
+                }
+                else
+                {
+                    retvalue = retvalue + carta.getNumero();
+                }
+        }
      
      return retvalue;
     }
@@ -86,21 +92,32 @@ public class Mano {
         Collections.sort(mano); 
     }
      
-      public boolean cambiaCarta(Carta carta,Mazzo mazzo)
+      public void cambiaCarta(Carta carta,Mazzo mazzo)
     {
-        boolean add = false;
-                
+            
         try
         {
         this.mano.remove(carta);
-        add = this.mano.add(mazzo.estraiCarta(mazzo));
+        this.mano.add(mazzo.estraiCarta(mazzo));
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
 
-        return add;
+    }
+       public void cambiaCartaGiocatore(Carta carta,Mazzo mazzo,int i)
+    {   
+        try
+        {
+        this.mano.remove(carta);
+        this.mano.add(i,mazzo.estraiCarta(mazzo));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
  

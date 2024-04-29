@@ -28,8 +28,12 @@ public class Carta implements Comparable<Carta> {
         this.verificaCartaPescata = verificaCartaPescata;
     }
 
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
     
-  
+    
 
     public String getSeme() {
         return seme;
@@ -46,9 +50,25 @@ public class Carta implements Comparable<Carta> {
     @Override
     public String toString()
     {
-      return numero+" "+seme+"\n";
-      
-    }
+        String retvalue = "";
+      if(numero<11)
+      {
+        retvalue = numero+" "+seme+"\n";
+      }
+      else if(numero==11)
+      {
+        retvalue = "J"+" "+seme+"\n";
+      }
+        else if(numero==12)
+      {
+          retvalue= "Q"+" "+seme+"\n";
+      }
+        else if(numero==13)
+      {
+          retvalue= "K"+" "+seme+"\n";
+      }
+      return retvalue;
+      }
 
     @Override
     public int compareTo(Carta other) {
