@@ -4,6 +4,7 @@
  */
 package com.mycompany.blackjack_new.Poker;
 
+import com.mycompany.blackjack_new.Asso;
 import com.mycompany.blackjack_new.Carta;
 import com.mycompany.blackjack_new.Mano;
 import java.util.ArrayList;
@@ -207,6 +208,7 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
     public void distinguiPunti(Mano mano)
     {
         mano.ordinaMano();
+        verificaCorreggiAsso(mano);
         ArrayList<ArrayList<Carta>> verificaSeCiSonoCoppie = verificaSeCiSonoCoppie(mano);
         
         if (verificaScalaRealeColore(mano))
@@ -277,6 +279,24 @@ public class PuntoPoker implements Comparable<PuntoPoker>{
                       
             return retvalue;
         }
+    
+    //metodo che verifica se ci sono assi in mano e gli dà il corretto valore
+    private void verificaCorreggiAsso(Mano mano)
+    {     
+        Carta carta =mano.getMano().get(4);
+        if(carta instanceof Asso)
+        {
+            if(mano.getMano().get(1).getNumero() ==2)
+            {
+                carta.setNumero(1);
+                if(!verificaScala(mano))
+                {
+                  carta.setNumero(14);  
+                }
+            }
+        }
+        
+    }
 }
     
    

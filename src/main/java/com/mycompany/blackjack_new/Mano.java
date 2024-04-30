@@ -75,9 +75,13 @@ public class Mano {
         int retvalue = 0;
 
         for (Carta carta : mano)
-        {      if(carta.getNumero()>10)
+        {      if(carta.getNumero()>10 && carta.getNumero() != 14)
                 {
                     retvalue = retvalue + 10;   
+                }
+                else if(carta.getNumero()==14)
+                {
+                    retvalue = retvalue + 1;
                 }
                 else
                 {

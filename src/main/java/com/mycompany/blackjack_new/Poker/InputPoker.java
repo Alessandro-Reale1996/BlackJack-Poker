@@ -58,7 +58,7 @@ public class InputPoker
             {
                 while(true)
                 {
-                    System.out.println("Che carte vuoi cambiare? (la virgola è il carattere separatore");
+                    System.out.println("Che carte vuoi cambiare? (la virgola è il carattere separatore)");
                     input= scanner.nextLine();
                     //divido la stirnga e metto il risultato in un Array con un ciclo "for"
                     StringTokenizer tokenizer = new StringTokenizer(input,",");

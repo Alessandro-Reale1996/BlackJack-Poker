@@ -40,7 +40,7 @@ public class Mazzo{
                 retvalue.mazzo.add(carta);
             }
                    
-                Asso asso = new Asso(false, seme, 1);
+                Asso asso = new Asso(false, seme, 14);
                 retvalue.mazzo.add(asso);
             
         }

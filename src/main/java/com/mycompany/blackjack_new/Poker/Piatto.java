@@ -46,16 +46,31 @@ public class Piatto {
             giocatore.setAmmontale(giocatore.getAmmontale()-giocatore.getAmmontale()/10);
         }        
     }
-
+    
+    //Aggiungo i rilanci all'ammontale.
     public void aggiungiRilancio(ArrayList<Giocatore> giocatori)
     {
+        int retvalue = this.ammontalePiatto;
         for(Giocatore giocatore : giocatori)
         {
-            giocatore.rilancioAuto(giocatore);
+            retvalue = retvalue + giocatore.rilancioAuto(giocatore);
         }
+        this.ammontalePiatto = retvalue;
     }
 
-
+    //trovo il rilancio più alto e lo setto come rilancio generale.
+    public void setRilancioGeneralePerGiocatore(ArrayList<Giocatore> giocatori)
+    {
+        int retvalue = giocatori.get(0).getRilancioGiocatore();
+        for(Giocatore giocatore : giocatori)
+        {
+            if(giocatore.getRilancioGiocatore()>retvalue)
+            {
+                retvalue = giocatore.getRilancioGiocatore();
+            }
+        }
+        this.setRilancioGenerale(retvalue);
+    }
 
     
 }
