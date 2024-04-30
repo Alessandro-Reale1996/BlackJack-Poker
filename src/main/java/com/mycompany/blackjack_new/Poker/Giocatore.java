@@ -235,6 +235,24 @@ public class Giocatore implements Comparable<Giocatore> {
                     
             }
         }
-        return retvalue;
+        this.rilancioGiocatore=retvalue;
+        return retvalue;       
+    }
+    
+    //Trovo il Delta tra il rilancio generale e il rilancioGiocatore
+    public int differenzaRilancioGiocRilancioGen(Piatto piatto)
+    {
+        return piatto.getRilancioGenerale()-this.rilancioGiocatore;
+    }
+    
+    //Capisci il valore del delta e comportati di conseguenza
+    public void compensaRilancioGenerale(Piatto piatto)
+    {
+        if(differenzaRilancioGiocRilancioGen(piatto) >0)
+        {            
+           this.ammontale = this.ammontale-differenzaRilancioGiocRilancioGen(piatto);    
+           piatto.setAmmontalePiatto(piatto.getAmmontalePiatto()+differenzaRilancioGiocRilancioGen(piatto));
+        }
+       //TODO: continuare questo metodo 
     }
 }
