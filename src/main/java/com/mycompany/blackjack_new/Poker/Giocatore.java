@@ -20,6 +20,12 @@ public class Giocatore implements Comparable<Giocatore> {
     public Giocatore() {
     }
 
+    public Giocatore(String nomegiocatore) {
+        this.nomegiocatore = nomegiocatore;
+    }
+    
+    
+
     public Giocatore(int ammontale) {
         this.ammontale = ammontale;
         this.rilancioGiocatore = 0;
@@ -96,7 +102,7 @@ public class Giocatore implements Comparable<Giocatore> {
     }
    
     //Creo il metodo per il rilancio automatizzato
-    public int rilancioAuto(Giocatore giocatore)
+    public int rilancioAuto(Giocatore giocatore,Piatto piatto)
     {
         int retvalue = 0;
         //creo uno switch, con una relazione punti(valore)- ammontale scommesso.
@@ -134,7 +140,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    //TODO
+                    System.out.println(compensaRilancioGenerale(piatto));
                     
             }
         }
@@ -168,7 +174,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    //TODO
+                    System.out.println(compensaRilancioGenerale(piatto));
                     
             }
         }
@@ -206,7 +212,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    //TODO
+                    System.out.println(compensaRilancioGenerale(piatto));
                     
             }
         }
@@ -231,7 +237,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    //TODO
+                    System.out.println(compensaRilancioGenerale(piatto));
                     
             }
         }
@@ -246,13 +252,25 @@ public class Giocatore implements Comparable<Giocatore> {
     }
     
     //Capisci il valore del delta e comportati di conseguenza
-    public void compensaRilancioGenerale(Piatto piatto)
+    public String compensaRilancioGenerale(Piatto piatto)
     {
+        String retvalue = "";
         if(differenzaRilancioGiocRilancioGen(piatto) >0)
         {            
            this.ammontale = this.ammontale-differenzaRilancioGiocRilancioGen(piatto);    
            piatto.setAmmontalePiatto(piatto.getAmmontalePiatto()+differenzaRilancioGiocRilancioGen(piatto));
+           retvalue = this.nomegiocatore+" compensa per "+differenzaRilancioGiocRilancioGen(piatto);
         }
-       //TODO: continuare questo metodo 
+        else
+        {
+            retvalue = check();
+        }
+        return retvalue;
+    }
+    
+    //creo il metodo "check"
+    private String check()
+    {
+        return this.nomegiocatore+" check";
     }
 }

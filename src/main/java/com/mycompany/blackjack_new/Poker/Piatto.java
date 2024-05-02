@@ -48,12 +48,12 @@ public class Piatto {
     }
     
     //Aggiungo i rilanci all'ammontale.
-    public void aggiungiRilancio(ArrayList<Giocatore> giocatori)
+    public void aggiungiRilancio(ArrayList<Giocatore> giocatori, Piatto piatto)
     {
         int retvalue = this.ammontalePiatto;
         for(Giocatore giocatore : giocatori)
         {
-            retvalue = retvalue + giocatore.rilancioAuto(giocatore);
+            retvalue = retvalue + giocatore.rilancioAuto(giocatore,piatto);
         }
         this.ammontalePiatto = retvalue;
     }
@@ -72,6 +72,21 @@ public class Piatto {
         this.setRilancioGenerale(retvalue);
     }
 
+    //verifica se tutti i giocatori hanno compensato il rilancio generale
+    public boolean unGiocatoreMenoRilancioGenerale(ArrayList<Giocatore> giocatori,Piatto piatto)
+    {
+        boolean retvalue = true;
+        
+        //se esiste un giocatore che non ha compensato, allora retvalue=false
+        for(Giocatore giocatore : giocatori)
+        {
+            if(giocatore.getRilancioGiocatore() != piatto.getRilancioGenerale())
+            {
+                retvalue = false;
+            }
+        }
+        return retvalue;
+    }
     
 }
 
