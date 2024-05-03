@@ -18,6 +18,11 @@ public class ConfrontaPunteggio {
         return confrontapunteggio;
     }
 
+    public void setConfrontapunteggio(ArrayList<Giocatore> confrontapunteggio) {
+        this.confrontapunteggio = confrontapunteggio;
+    }
+
+    
     
     
     public ConfrontaPunteggio() {

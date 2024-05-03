@@ -20,20 +20,11 @@ public class Giocatore implements Comparable<Giocatore> {
     public Giocatore() {
     }
 
-    public Giocatore(String nomegiocatore) {
+    public Giocatore(String nomegiocatore,int ammontale) {
         this.nomegiocatore = nomegiocatore;
-    }
-    
-    
-
-    public Giocatore(int ammontale) {
         this.ammontale = ammontale;
-        this.rilancioGiocatore = 0;
     }
-
-    
    
-
     public Giocatore(String nomegiocatore,Mano mano, PuntoPoker puntoPoker) {
         this.nomegiocatore = nomegiocatore;
         this.mano = mano;

@@ -42,8 +42,8 @@ public class Piatto {
         this.ammontalePiatto = 0;
         for(Giocatore giocatore : giocatori)
         {
-            this.ammontalePiatto = this.ammontalePiatto + giocatore.getAmmontale()/10;
-            giocatore.setAmmontale(giocatore.getAmmontale()-giocatore.getAmmontale()/10);
+            this.ammontalePiatto = this.ammontalePiatto + 5;
+            giocatore.setAmmontale(giocatore.getAmmontale()-5);
         }        
     }
     
@@ -86,6 +86,12 @@ public class Piatto {
             }
         }
         return retvalue;
+    }
+    
+    //Ritorna a 0 e dai la vincita al giocatore
+    public void vincitaGiocatore(Giocatore giocatore)
+    {
+        giocatore.setAmmontale(giocatore.getAmmontale()+this.ammontalePiatto);
     }
     
 }

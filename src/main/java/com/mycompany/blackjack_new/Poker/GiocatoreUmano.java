@@ -4,7 +4,9 @@
  */
 package com.mycompany.blackjack_new.Poker;
 
+import com.mycompany.blackjack_new.Carta;
 import com.mycompany.blackjack_new.Mano;
+import java.util.Scanner;
 
 /**
  *
@@ -18,18 +20,46 @@ public class GiocatoreUmano extends Giocatore {
     public GiocatoreUmano() {
     }
 
-    public GiocatoreUmano(String nomegiocatore) {
-        super(nomegiocatore);
+    public GiocatoreUmano(String nomegiocatore, int ammontale) {
+        super(nomegiocatore, ammontale);
     }
+
     
-    public GiocatoreUmano(int ammontale) {
-        super(ammontale);
-    }
 
     public GiocatoreUmano(String nomegiocatore, Mano mano, PuntoPoker puntoPoker)
     {
         super(nomegiocatore, mano, puntoPoker);
     }
     
-    //TODO: bisogna mettere il metodo per rilanciare
+    //Metodo per far rilanciare giocatore umano 
+    public void rilancioGiocatoreUmano(Giocatore giocatore, Piatto piatto)
+    {
+        boolean inputvalido = false;
+        do
+        {
+            Scanner scanner = new Scanner(System.in);       
+            System.out.println("Quanto vuoi puntare?");
+            try
+            {
+                int input = scanner.nextInt();
+                if(input>=giocatore.getAmmontale())
+                {
+                    //PROBLEMA FITTIZIO
+                    for(Carta carta : giocatore.getMano().getMano())
+                    {
+                        giocatore.getMano().getMano().remove(carta);
+                    }
+                }
+                giocatore.setRilancioGiocatore(input);
+                giocatore.setAmmontale(giocatore.getAmmontale()-input);
+                piatto.setAmmontalePiatto(piatto.getAmmontalePiatto()+input);
+                inputvalido=true;
+            }
+            catch(Exception e)
+            {
+                System.out.println("Input non valido");
+            }
+        }while(!inputvalido);
+    }
+
 }
