@@ -101,7 +101,10 @@ public class Giocatore implements Comparable<Giocatore> {
         {
             switch(giocatore.getPuntoPoker().getValore())
             {
-
+                case 1:
+                   retvalue = giocatore.ammontale/10;
+                   this.ammontale = this.ammontale - retvalue;
+                   break;
                 case 2:
                    retvalue = giocatore.ammontale/10;
                    this.ammontale = this.ammontale - retvalue;

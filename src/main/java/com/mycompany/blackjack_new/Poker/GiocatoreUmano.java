@@ -57,7 +57,7 @@ public class GiocatoreUmano extends Giocatore {
             }
             catch(Exception e)
             {
-                System.out.println("Input non valido");
+                System.out.println("Input non valido o quantità rilanciata superiore all'ammontale.");
             }
         }while(!inputvalido);
     }

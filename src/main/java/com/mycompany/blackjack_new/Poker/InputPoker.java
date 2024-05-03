@@ -89,6 +89,12 @@ public class InputPoker
                 g4.setMano(mano4);
                 g5.setMano(mano5);
                 
+                 //Provvisorio
+                 System.out.println(g1.getPuntoPoker().getValore());
+                 System.out.println(g2.getPuntoPoker().getValore());
+                 System.out.println(g3.getPuntoPoker().getValore());
+                 System.out.println(g4.getPuntoPoker().getValore());
+                 System.out.println(g5.getPuntoPoker().getValore());
                 /* Qui verrano mostrtate le carte al giocatore, dovrebbero essere numerate 
                 di modo che, in un secondo momento, sarà possibile distinguerle in face si cambio
                 */
@@ -113,8 +119,10 @@ public class InputPoker
                             g1.rilancioGiocatoreUmano(g1, piatto);
                             for(int i=1;i<giocatori.size();i++)
                             {
-                                //rilancio automatico
-                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto);
+                                 //rilancio automatico
+                               
+                                System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
+                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));                              
                             }
                             break;
                         case "c":
@@ -123,8 +131,9 @@ public class InputPoker
                             g1.compensaRilancioGenerale(piatto);
                             for(int i=1;i<giocatori.size();i++)
                             {
-                                //rilancio automatico
-                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto);
+                                //rilancio automatico                               
+                                System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
+                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));                                 
                             }
                             break;
                         default:
@@ -237,7 +246,8 @@ public class InputPoker
                             for(int i=1;i<giocatori.size();i++)
                             {
                                 //rilancio automatico
-                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto);
+                                System.out.println(giocatori.get(i).getNomegiocatore()+" ha rilanciato "+
+                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));
                             }
                             break;
                         case "c":
@@ -247,14 +257,15 @@ public class InputPoker
                             for(int i=1;i<giocatori.size();i++)
                             {
                                 //rilancio automatico
-                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto);
+                                System.out.println(giocatori.get(i).getNomegiocatore()+" ha rilanciato "+
+                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));
                             }
                             break;
                         default:
                             System.out.println("imput non valido");
                             break;
                     }
-                }while(piatto.unGiocatoreMenoRilancioGenerale(giocatori, piatto) && !rispostaValida );
+                }while(piatto.unGiocatoreMenoRilancioGenerale(giocatori, piatto)==true && !rispostaValida );
 
                 p1.distinguiPunti(mano1);
                 p2.distinguiPunti(mano2);
