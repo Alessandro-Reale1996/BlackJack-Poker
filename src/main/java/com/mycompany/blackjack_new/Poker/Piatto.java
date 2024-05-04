@@ -71,9 +71,25 @@ public class Piatto {
         }
         this.setRilancioGenerale(retvalue);
     }
+    
+    public void nessunoHaRilanciato(ArrayList<Giocatore> giocatori)
+    {
+        boolean nessunoHaRilanciato=true;
+        for(Giocatore giocatore:giocatori)
+        {
+            if(giocatore.getRilancioGiocatore()!= 0)
+            {
+                nessunoHaRilanciato=false;
+            }
+        }
+        if (nessunoHaRilanciato)
+        {
+            this.rilancioGenerale = 0;
+        }
+    }
 
     //verifica se tutti i giocatori hanno compensato il rilancio generale
-    public boolean unGiocatoreMenoRilancioGenerale(ArrayList<Giocatore> giocatori,Piatto piatto)
+    public boolean RilancioGiocatoreUgualeRilancioGenerale(ArrayList<Giocatore> giocatori,Piatto piatto)
     {
         boolean retvalue = true;
         

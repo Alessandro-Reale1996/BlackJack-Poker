@@ -94,7 +94,9 @@ public class Giocatore implements Comparable<Giocatore> {
    
     //Creo il metodo per il rilancio automatizzato
     public int rilancioAuto(Giocatore giocatore,Piatto piatto)
-    {
+    {   
+        //prima di tutto il giocatore compensa.
+        System.out.println(compensaRilancioGenerale(piatto));
         int retvalue = 0;
         //creo uno switch, con una relazione punti(valore)- ammontale scommesso.
         if(giocatore.getAmmontale()>75)
@@ -134,7 +136,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(compensaRilancioGenerale(piatto));
+                    System.out.println(check());
                     
             }
         }
@@ -168,7 +170,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(compensaRilancioGenerale(piatto));
+                    System.out.println(check());
                     
             }
         }
@@ -206,7 +208,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(compensaRilancioGenerale(piatto));
+                    System.out.println(check());
                     
             }
         }
@@ -231,7 +233,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(compensaRilancioGenerale(piatto));
+                    System.out.println(check());
                     
             }
         }
@@ -242,23 +244,29 @@ public class Giocatore implements Comparable<Giocatore> {
     //Trovo il Delta tra il rilancio generale e il rilancioGiocatore
     public int differenzaRilancioGiocRilancioGen(Piatto piatto)
     {
-        return piatto.getRilancioGenerale()-this.rilancioGiocatore;
+        int differenza = piatto.getRilancioGenerale()-this.rilancioGiocatore;
+        if(differenza <0)
+        {
+            differenza = 0;
+        }
+        return differenza;
+            
     }
     
     //Capisci il valore del delta e comportati di conseguenza
     public String compensaRilancioGenerale(Piatto piatto)
     {
         String retvalue = "";
-        if(differenzaRilancioGiocRilancioGen(piatto) >0)
-        {            
+           
+            //tolgo il delta dall'ammontale giocatore
            this.ammontale = this.ammontale-differenzaRilancioGiocRilancioGen(piatto);    
+           //aggiumgo il delta all'ammontale piatto
            piatto.setAmmontalePiatto(piatto.getAmmontalePiatto()+differenzaRilancioGiocRilancioGen(piatto));
+           //dico di quanto compensa il giocatore
            retvalue = this.nomegiocatore+" compensa per "+differenzaRilancioGiocRilancioGen(piatto);
-        }
-        else
-        {
-            retvalue = check();
-        }
+           //Compenso il rilancio giocatore
+           this.rilancioGiocatore=this.rilancioGiocatore+ differenzaRilancioGiocRilancioGen(piatto);
+
         return retvalue;
     }
     

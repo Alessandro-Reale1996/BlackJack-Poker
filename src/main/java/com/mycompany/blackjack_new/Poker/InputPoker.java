@@ -110,14 +110,21 @@ public class InputPoker
                     {
                         case "r":
                             rispostaValida=true;
+                            //prima di tutto il giocatore compensa
+                            System.out.println(g1.compensaRilancioGenerale(piatto));
                             // metodo per rilanciare che sarà in GiocatoreUmano
                             g1.rilancioGiocatoreUmano(g1, piatto);
+                            piatto.setRilancioGeneralePerGiocatore(giocatori);
+                            System.out.println("\nRilancio giocatore: "+g1.getRilancioGiocatore());
                             for(int i=1;i<giocatori.size();i++)
                             {
                                  //rilancio automatico
                                
                                 System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
-                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));                              
+                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));   
+                                piatto.setRilancioGeneralePerGiocatore(giocatori);
+                                
+                                System.out.println(giocatori.get(i).getNomegiocatore()+"Rilancoogiocatore "+giocatori.get(i).getRilancioGiocatore());
                             }
                             break;
                         case "c":
@@ -128,15 +135,20 @@ public class InputPoker
                             {
                                 //rilancio automatico                               
                                 System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
-                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));                                 
+                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto)); 
+                               
+                                System.out.println(giocatori.get(i).getNomegiocatore()+"Rilancoogiocatore "+giocatori.get(i).getRilancioGiocatore());
                             }
                             break;
                         default:
                             System.out.println("imput non valido");
                             break;
                     }
-                    //TODO: c'è un problema in questo while(credo sia di ordine logico)
-                }while(!piatto.unGiocatoreMenoRilancioGenerale(giocatori, piatto) || !rispostaValida );
+                    piatto.nessunoHaRilanciato(giocatori);
+                    System.out.println("\nRilancio generale "+piatto.rilancioGenerale);
+                    System.out.println("\nAmmnontale piatto "+piatto.ammontalePiatto);
+                    
+                }while(!piatto.RilancioGiocatoreUgualeRilancioGenerale(giocatori, piatto) || !rispostaValida );
 
                 /*Diamo la possibilità di cambiare carta, prima chiedendo di cambiare, poi con uno swich si sceglierà
                 la carta,dovrebbe essere tutto contornato da un ciclo while. 
@@ -263,7 +275,7 @@ public class InputPoker
                             break;
                     }
                    
-                }while(!piatto.unGiocatoreMenoRilancioGenerale(giocatori, piatto) || !rispostaValida);
+                }while(!piatto.RilancioGiocatoreUgualeRilancioGenerale(giocatori, piatto) || !rispostaValida);
 
                 p1.distinguiPunti(mano1);
                 p2.distinguiPunti(mano2);
