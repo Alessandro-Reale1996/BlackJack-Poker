@@ -16,6 +16,8 @@ public class Giocatore implements Comparable<Giocatore> {
     protected PuntoPoker puntoPoker;
     protected int ammontale;
     protected int rilancioGiocatore;
+    protected int rilancioGiocatoreNoCompensazione;
+    
 
     public Giocatore() {
     }
@@ -237,7 +239,8 @@ public class Giocatore implements Comparable<Giocatore> {
                     
             }
         }
-        this.rilancioGiocatore=retvalue;
+        this.rilancioGiocatore= this.rilancioGiocatore+retvalue;
+        this.rilancioGiocatoreNoCompensazione=retvalue;
         return retvalue;       
     }
     
@@ -273,6 +276,8 @@ public class Giocatore implements Comparable<Giocatore> {
     //creo il metodo "check"
     private String check()
     {
+        this.rilancioGiocatore=0;
+        this.rilancioGiocatoreNoCompensazione=0;
         return this.nomegiocatore+" check";
     }
 }

@@ -74,29 +74,35 @@ public class Piatto {
     
     public void nessunoHaRilanciato(ArrayList<Giocatore> giocatori)
     {
+        //controlla se almeno un giocatore abbia rilanciato.
         boolean nessunoHaRilanciato=true;
         for(Giocatore giocatore:giocatori)
         {
-            if(giocatore.getRilancioGiocatore()!= 0)
+            if(giocatore.rilancioGiocatoreNoCompensazione!= 0)
             {
                 nessunoHaRilanciato=false;
             }
         }
+        //se nessuno ha rilanciato set rilancioGenerale=0.
         if (nessunoHaRilanciato)
         {
             this.rilancioGenerale = 0;
+            for(Giocatore giocatore : giocatori)
+            {
+                giocatore.setRilancioGiocatore(0);
+            }
         }
     }
 
     //verifica se tutti i giocatori hanno compensato il rilancio generale
-    public boolean RilancioGiocatoreUgualeRilancioGenerale(ArrayList<Giocatore> giocatori,Piatto piatto)
+    public boolean RilancioGiocatoreUgualeRilancioGenerale(ArrayList<Giocatore> giocatori)
     {
         boolean retvalue = true;
         
         //se esiste un giocatore che non ha compensato, allora retvalue=false
         for(Giocatore giocatore : giocatori)
         {
-            if(giocatore.getRilancioGiocatore() != piatto.getRilancioGenerale())
+            if(giocatore.getRilancioGiocatore() != this.rilancioGenerale)
             {
                 retvalue = false;
             }

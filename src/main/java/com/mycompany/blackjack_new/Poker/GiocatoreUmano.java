@@ -62,4 +62,9 @@ public class GiocatoreUmano extends Giocatore {
         }while(!inputvalido);
     }
 
+    public void check() {
+       this.rilancioGiocatore=0;
+        this.rilancioGiocatoreNoCompensazione=0;
+    }
+
 }

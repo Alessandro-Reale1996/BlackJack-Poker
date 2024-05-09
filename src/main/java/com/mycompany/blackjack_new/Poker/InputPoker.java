@@ -41,10 +41,8 @@ public class InputPoker
                 Piatto piatto = new Piatto();
                 //popoliamolo
                 piatto.PololaPiattoInizioRound(giocatori);
-                //inzializamo il mazzo
-                Mazzo mazzo =new Mazzo();
-                //popoliamolo
-                mazzo = Mazzo.popolaMazzo();
+                //inzializamo il mazzo e popoliamolo
+                Mazzo mazzo = Mazzo.popolaMazzo();
                 //Creaiamo le mani
                 Mano mano1 = new Mano();
                 Mano mano2 = new Mano();
@@ -99,56 +97,8 @@ public class InputPoker
                 System.out.println("\nIl tuo ammontale:");
                 System.out.println(g1.getAmmontale());
 
-                // Qui si dà la possibilità al giocatore di rilanciare o check 
-                boolean rispostaValida = false;
-                do
-                {
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Vuoi rilanciare o check? r/c");
-                    String input= scanner.nextLine();
-                    switch (input) 
-                    {
-                        case "r":
-                            rispostaValida=true;
-                            //prima di tutto il giocatore compensa
-                            System.out.println(g1.compensaRilancioGenerale(piatto));
-                            // metodo per rilanciare che sarà in GiocatoreUmano
-                            g1.rilancioGiocatoreUmano(g1, piatto);
-                            piatto.setRilancioGeneralePerGiocatore(giocatori);
-                            System.out.println("\nRilancio giocatore: "+g1.getRilancioGiocatore());
-                            for(int i=1;i<giocatori.size();i++)
-                            {
-                                 //rilancio automatico
-                               
-                                System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
-                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));   
-                                piatto.setRilancioGeneralePerGiocatore(giocatori);
-                                
-                                System.out.println(giocatori.get(i).getNomegiocatore()+"Rilancoogiocatore "+giocatori.get(i).getRilancioGiocatore());
-                            }
-                            break;
-                        case "c":
-                            rispostaValida=true;
-                            //Compenso e check
-                            System.out.println(g1.compensaRilancioGenerale(piatto));
-                            for(int i=1;i<giocatori.size();i++)
-                            {
-                                //rilancio automatico                               
-                                System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
-                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto)); 
-                               
-                                System.out.println(giocatori.get(i).getNomegiocatore()+"Rilancoogiocatore "+giocatori.get(i).getRilancioGiocatore());
-                            }
-                            break;
-                        default:
-                            System.out.println("imput non valido");
-                            break;
-                    }
-                    piatto.nessunoHaRilanciato(giocatori);
-                    System.out.println("\nRilancio generale "+piatto.rilancioGenerale);
-                    System.out.println("\nAmmnontale piatto "+piatto.ammontalePiatto);
-                    
-                }while(!piatto.RilancioGiocatoreUgualeRilancioGenerale(giocatori, piatto) || !rispostaValida );
+                //Prima fase di rilancio
+                FaseRilancio.faseRilancio(piatto, giocatori, g1);
 
                 /*Diamo la possibilità di cambiare carta, prima chiedendo di cambiare, poi con uno swich si sceglierà
                 la carta,dovrebbe essere tutto contornato da un ciclo while. 
@@ -237,46 +187,7 @@ public class InputPoker
                 //qui si mostra l'ammontale
                 System.out.println("\nIl tuo ammontale:");
                 System.out.println(g1.getAmmontale());
-
-                 // Qui si dà la possibilità al giocatore di rilanciare o check II volta
-                rispostaValida = false;
-                do
-                {
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Vuoi rilanciare o check? r/c");
-                    String input= scanner.nextLine();
-                    switch (input) 
-                    {
-                        case "r":
-                            //TODO: problema se rilancio,Bho!
-                            rispostaValida=true;
-                            // metodo per rilanciare che sarà in GiocatoreUmano
-                            g1.rilancioGiocatoreUmano(g1, piatto);
-                            for(int i=1;i<giocatori.size();i++)
-                            {
-                                //rilancio automatico
-                                System.out.println(giocatori.get(i).getNomegiocatore()+" ha rilanciato "+
-                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));
-                            }
-                            break;
-                        case "c":
-                            rispostaValida=true;
-                            //Compenso e check
-                            g1.compensaRilancioGenerale(piatto);
-                            for(int i=1;i<giocatori.size();i++)
-                            {
-                                //rilancio automatico
-                                System.out.println(giocatori.get(i).getNomegiocatore()+" ha rilanciato "+
-                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));
-                            }
-                            break;
-                        default:
-                            System.out.println("imput non valido");
-                            break;
-                    }
-                   
-                }while(!piatto.RilancioGiocatoreUgualeRilancioGenerale(giocatori, piatto) || !rispostaValida);
-
+                
                 p1.distinguiPunti(mano1);
                 p2.distinguiPunti(mano2);
                 p3.distinguiPunti(mano3);
@@ -288,6 +199,9 @@ public class InputPoker
                 g3.setPuntoPoker(p3);
                 g4.setPuntoPoker(p4);
                 g5.setPuntoPoker(p5);
+                
+                //Seconda fase di rilancio
+                FaseRilancio.faseRilancio(piatto, giocatori, g1);
 
                 ConfrontaPunteggio CP = new ConfrontaPunteggio();
 
