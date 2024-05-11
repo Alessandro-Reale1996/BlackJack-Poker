@@ -97,8 +97,6 @@ public class Giocatore implements Comparable<Giocatore> {
     //Creo il metodo per il rilancio automatizzato
     public int rilancioAuto(Giocatore giocatore,Piatto piatto)
     {   
-        //prima di tutto il giocatore compensa.
-        System.out.println(compensaRilancioGenerale(piatto));
         int retvalue = 0;
         //creo uno switch, con una relazione punti(valore)- ammontale scommesso.
         if(giocatore.getAmmontale()>75)
