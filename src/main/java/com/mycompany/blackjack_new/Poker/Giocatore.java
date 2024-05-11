@@ -106,39 +106,57 @@ public class Giocatore implements Comparable<Giocatore> {
             switch(giocatore.getPuntoPoker().getValore())
             {
                 case 1:
-                   retvalue = giocatore.ammontale/10;
+                    //prima di tutto il giocatore compensa.
+                    System.out.println(compensaRilancioGenerale(piatto));                   
+                    retvalue = giocatore.ammontale/10;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 2:
+                    System.out.println(compensaRilancioGenerale(piatto));     
                    retvalue = giocatore.ammontale/10;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 3:
+                    System.out.println(compensaRilancioGenerale(piatto));     
                    retvalue = giocatore.ammontale/8;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 4:
+                    System.out.println(compensaRilancioGenerale(piatto));     
                    retvalue = giocatore.ammontale/8;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 5:
+                    System.out.println(compensaRilancioGenerale(piatto));     
                    retvalue = giocatore.ammontale/6;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 6:
+                    System.out.println(compensaRilancioGenerale(piatto));     
                    retvalue = giocatore.ammontale/6;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 7:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/4;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 8:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/2;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(check());
+                    //Bivio: check or fold
+                    if(giocatore.puntoPoker.valore>85)
+                    {
+                        System.out.println(compensaRilancioGenerale(piatto));
+                        System.out.println(check());
+                    }
+                    else
+                    {
+                        //TODO: metodo fold
+                    }
                     
             }
         }
@@ -148,31 +166,46 @@ public class Giocatore implements Comparable<Giocatore> {
             {
 
                 case 3:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/10;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 4:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/10;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 5:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/8;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 6:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/6;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 7:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/4;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 8:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/2;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(check());
+                    //Bivio: check or fold
+                    if(giocatore.puntoPoker.valore>85)
+                    {
+                        System.out.println(compensaRilancioGenerale(piatto));
+                        System.out.println(check());
+                    }
+                    else
+                    {
+                        //TODO: metodo fold
+                    }
                     
             }
         }
@@ -182,35 +215,51 @@ public class Giocatore implements Comparable<Giocatore> {
             {
 
                 case 2:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/10;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 3:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/10;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 4:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/8;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 5:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/8;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 6:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/6;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 7:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/4;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 8:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/2;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(check());
+                    //Bivio: check or fold
+                    if(giocatore.puntoPoker.valore>85)
+                    {
+                        System.out.println(compensaRilancioGenerale(piatto));
+                        System.out.println(check());
+                    }
+                    else
+                    {
+                        //TODO: metodo fold
+                    }
                     
             }
         }
@@ -219,23 +268,36 @@ public class Giocatore implements Comparable<Giocatore> {
             switch(giocatore.getPuntoPoker().getValore())
             {
                 case 5:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/8;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 6:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/8;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 7:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/4;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 case 8:
+                    System.out.println(compensaRilancioGenerale(piatto));
                    retvalue = giocatore.ammontale/2;
                    this.ammontale = this.ammontale - retvalue;
                    break;
                 default:
-                    System.out.println(check());
+                    //Bivio: check or fold
+                    if(giocatore.puntoPoker.valore>85)
+                    {
+                        System.out.println(compensaRilancioGenerale(piatto));
+                        System.out.println(check());
+                    }
+                    else
+                    {
+                        //TODO: metodo fold
+                    }
                     
             }
         }
