@@ -12,13 +12,14 @@ import java.util.Scanner;
  * @author gianf
  */
 public class FaseRilancio {
-    
+    //TODO: per qualche ragione la compensazione non funzione
+    //(non tiene conto di quanto si è compensato nel turno precedente).
     public static void faseRilancio(Piatto piatto, ArrayList<Giocatore> giocatori,GiocatoreUmano g1)
     {
         // Qui si dà la possibilità al giocatore di rilanciare o check 1
                 boolean rispostaValida = false;
                 do
-                {
+                {   int count = 0;
                     Scanner scanner = new Scanner(System.in);
                     System.out.println("Vuoi rilanciare o check? r/c");
                     String input= scanner.nextLine();
@@ -67,6 +68,21 @@ public class FaseRilancio {
                     piatto.nessunoHaRilanciato(giocatori);
                     System.out.println("\nRilancio generale "+piatto.rilancioGenerale);
                     System.out.println("\nAmmnontale piatto "+piatto.ammontalePiatto);
+                    
+                    if(count == 6)
+                    {
+                        System.out.println("Raggiunto massimo di puntate in questa fase");
+                        for (Giocatore giocatore:giocatori)
+                        {
+                            giocatore.check(piatto);
+                            giocatore.rilancioGiocatore = 0;
+                            giocatore.rilancioGiocatoreNoCompensazione = 0;
+                        }
+                    }
+                    else
+                    {
+                        count++;
+                    }
                     
                 }while(!piatto.RilancioGiocatoreUgualeRilancioGenerale(giocatori) || !rispostaValida );
     }
