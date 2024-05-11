@@ -27,14 +27,25 @@ public class InputPoker
 
             ArrayList<Giocatore> giocatori = new ArrayList<>();
 
+        while(true)
+        {
             giocatori.add(g1);
             giocatori.add(g2);
             giocatori.add(g3);
             giocatori.add(g4);
             giocatori.add(g5);
-
-        while(true)
-        {
+            
+             Iterator<Giocatore> iterator = giocatori.iterator();
+                
+                while(iterator.hasNext())
+                {
+                    Giocatore giocatore = iterator.next();
+                    if(giocatore.getAmmontale()<= 5)
+                    {
+                        iterator.remove();
+                    }
+                }
+            
             while(true)
             {
                 //inizializiamo il piatto
@@ -224,17 +235,6 @@ public class InputPoker
                 System.out.println(giocatoreVincente.getNomegiocatore()); 
                 piatto.vincitaGiocatore(giocatoreVincente);
                 
-                Iterator<Giocatore> iterator = giocatori.iterator();
-                
-                while(iterator.hasNext())
-                {
-                    Giocatore giocatore = iterator.next();
-                    if(giocatore.getAmmontale()<= 5)
-                    {
-                        iterator.remove();
-                    }
-                }
-
                 break;
             } 
             if (g1.getAmmontale()<=5)

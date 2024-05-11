@@ -95,6 +95,7 @@ public class Giocatore implements Comparable<Giocatore> {
     }
    
     //Creo il metodo per il rilancio automatizzato
+    //TODO: c'è un' ERRORE in questo metodo, che non fa più funzionare "rilancioGenerale"
     public int rilancioAuto(Giocatore giocatore,Piatto piatto)
     {   
         int retvalue = 0;
