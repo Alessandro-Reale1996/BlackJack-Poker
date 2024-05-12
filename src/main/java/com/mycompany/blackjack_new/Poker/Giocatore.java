@@ -95,12 +95,11 @@ public class Giocatore implements Comparable<Giocatore> {
     }
    
     //Creo il metodo per il rilancio automatizzato
-    //TODO: c'è un' ERRORE in questo metodo, che non fa più funzionare "rilancioGenerale"
     public int rilancioAuto(Giocatore giocatore,Piatto piatto)
     {   
-        int differenza = differenzaRilancioGiocRilancioGen(piatto);
         int retvalue = 0;
         //creo uno switch, con una relazione punti(valore)- ammontale scommesso.
+        //TODO: aggiungere metodo Fold
         if(giocatore.getAmmontale()>80)
         {
             switch(giocatore.getPuntoPoker().getValore())
@@ -148,11 +147,11 @@ public class Giocatore implements Comparable<Giocatore> {
                    break;
                 default:
                     //Bivio: check or fold
-                    if(giocatore.puntoPoker.valore>85)
+                    if(giocatore.ammontale>85)
                     {
                         System.out.println(check(piatto));
                     }
-                    else
+                    else if (giocatore.puntoPoker.valore<2)
                     {
                         //TODO: metodo fold
                     }
@@ -196,11 +195,11 @@ public class Giocatore implements Comparable<Giocatore> {
                    break;
                 default:
                     //Bivio: check or fold
-                    if(giocatore.puntoPoker.valore>85)
+                    if(giocatore.ammontale>65)
                     {
                         System.out.println(check(piatto));
                     }
-                    else
+                    else if(giocatore.puntoPoker.valore<2)
                     {
                         //TODO: metodo fold
                     }
@@ -249,7 +248,7 @@ public class Giocatore implements Comparable<Giocatore> {
                    break;
                 default:
                     //Bivio: check or fold
-                    if(giocatore.puntoPoker.valore>85)
+                    if(giocatore.ammontale>45)
                     {
                         System.out.println(check(piatto));
                     }
@@ -286,11 +285,11 @@ public class Giocatore implements Comparable<Giocatore> {
                    break;
                 default:
                     //Bivio: check or fold
-                    if(giocatore.puntoPoker.valore>85)
+                    if(giocatore.ammontale>25)
                     {
                         System.out.println(check(piatto));
                     }
-                    else
+                    else if (giocatore.puntoPoker.valore<2)
                     {
                         //TODO: metodo fold
                     }
@@ -318,11 +317,11 @@ public class Giocatore implements Comparable<Giocatore> {
                    break;
                 default:
                     //Bivio: check or fold
-                    if(giocatore.puntoPoker.valore>85)
+                    if(giocatore.ammontale>10)
                     {
                         System.out.println(check(piatto));
                     }
-                    else
+                    else if (giocatore.puntoPoker.valore<2)
                     {
                         //TODO: metodo fold
                     }
@@ -373,5 +372,11 @@ public class Giocatore implements Comparable<Giocatore> {
     {
         System.out.println(compensaRilancioGenerale(piatto));
         return this.nomegiocatore+" check";
+    }
+    
+    //TODO: creare metodo Fold
+    public void fold()
+    {
+        
     }
 }
