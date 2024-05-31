@@ -12,8 +12,6 @@ import java.util.Scanner;
  * @author gianf
  */
 public class FaseRilancio {
-    //TODO: per qualche ragione la compensazione non funzione
-    //(non tiene conto di quanto si è compensato nel turno precedente).
     public static void faseRilancio(Piatto piatto, ArrayList<Giocatore> giocatori,GiocatoreUmano g1)
     {
         // Qui si dà la possibilità al giocatore di rilanciare o check 1

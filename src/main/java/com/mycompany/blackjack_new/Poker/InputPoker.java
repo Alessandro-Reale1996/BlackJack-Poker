@@ -29,6 +29,8 @@ public class InputPoker
 
         while(true)
         {
+            /*All'inizio di ogni mano aggiungo i giocatori, se questi hanno un ammontale minore di 5
+            vengono eliminati dal Arraylist giocatori di modo che non possano partecipare alla mano.*/
             giocatori.add(g1);
             giocatori.add(g2);
             giocatori.add(g3);
@@ -60,8 +62,8 @@ public class InputPoker
                 Mano mano3 = new Mano();
                 Mano mano4 = new Mano();
                 Mano mano5 = new Mano();
+                
                 //popoliamole
-
                 for(int i =0;i<5;i++)
                 {
                     mano1.addCartaAsso(mazzo.estraiCarta(mazzo), mano1);
