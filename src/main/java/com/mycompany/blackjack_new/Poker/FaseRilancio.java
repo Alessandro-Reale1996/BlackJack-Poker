@@ -15,6 +15,8 @@ public class FaseRilancio {
     public static void faseRilancio(Piatto piatto, ArrayList<Giocatore> giocatori,GiocatoreUmano g1)
     {
         // Qui si dà la possibilità al giocatore di rilanciare o check 1
+        /*TODO: Necessita ancora della possibilità di "foldare" a GiocatoreUmano
+        ,la quale è già stata implementata in rialncioAutomatico() di Giocatore*/
                 boolean rispostaValida = false;
                 do
                 {   int count = 0;
@@ -36,7 +38,7 @@ public class FaseRilancio {
                                  //rilancio automatico
                                
                                 System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
-                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));   
+                                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto,giocatori));   
                                 piatto.setRilancioGeneralePerGiocatore(giocatori);
                                 
                                 System.out.println(giocatori.get(i).getNomegiocatore()+"Rilancoogiocatore "+giocatori.get(i).getRilancioGiocatore());
@@ -53,12 +55,14 @@ public class FaseRilancio {
                             {
                                 //rilancio automatico                               
                                 System.out.println(giocatori.get(i).getNomegiocatore()+" rilancia "+
-                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto));   
+                                        giocatori.get(i).rilancioAuto(giocatori.get(i), piatto,giocatori));   
                                 
                                 System.out.println(giocatori.get(i).getNomegiocatore()+"Rilancoogiocatore "+giocatori.get(i).getRilancioGiocatore());
                                 piatto.setRilancioGeneralePerGiocatore(giocatori);
                             }
                             break;
+                      //case "f":
+                            //Qui va aggiunto il metodo fold()
                         default:
                             System.out.println("imput non valido");
                             break;

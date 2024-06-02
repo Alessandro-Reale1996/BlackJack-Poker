@@ -25,10 +25,12 @@ public class InputPoker
             Giocatore g4 = new Giocatore("Player4",100);
             Giocatore g5 =new Giocatore("Player5",100);
 
-            ArrayList<Giocatore> giocatori = new ArrayList<>();
 
         while(true)
         {
+            //All'inizio di ogni turno creo la lista partita
+            ArrayList<Giocatore> giocatori = new ArrayList<>();
+            
             /*All'inizio di ogni mano aggiungo i giocatori, se questi hanno un ammontale minore di 5
             vengono eliminati dal Arraylist giocatori di modo che non possano partecipare alla mano.*/
             giocatori.add(g1);
@@ -57,48 +59,30 @@ public class InputPoker
                 //inzializamo il mazzo e popoliamolo
                 Mazzo mazzo = Mazzo.popolaMazzo();
                 //Creaiamo le mani
-                Mano mano1 = new Mano();
-                Mano mano2 = new Mano();
-                Mano mano3 = new Mano();
-                Mano mano4 = new Mano();
-                Mano mano5 = new Mano();
+                for(Giocatore giocatore : giocatori)
+                {
+                    giocatore.mano=new Mano();
+                }              
                 
                 //popoliamole
-                for(int i =0;i<5;i++)
-                {
-                    mano1.addCartaAsso(mazzo.estraiCarta(mazzo), mano1);
-                    mano2.addCartaAsso(mazzo.estraiCarta(mazzo), mano2);
-                    mano3.addCartaAsso(mazzo.estraiCarta(mazzo), mano3);
-                    mano4.addCartaAsso(mazzo.estraiCarta(mazzo), mano4);
-                    mano5.addCartaAsso(mazzo.estraiCarta(mazzo), mano5);
+                for(Giocatore giocatore : giocatori){
+                    for(int i =0;i<5;i++)
+                    {
+                        giocatore.mano.addCartaAsso(mazzo.estraiCarta(mazzo), giocatore.mano);
+                    }
                 }
 
-
-                PuntoPoker p1 = new PuntoPoker();
-                PuntoPoker p2 = new PuntoPoker();
-                PuntoPoker p3 = new PuntoPoker();
-                PuntoPoker p4 = new PuntoPoker();
-                PuntoPoker p5 = new PuntoPoker();
-
-
-                p1.distinguiPunti(mano1);
-                p2.distinguiPunti(mano2);
-                p3.distinguiPunti(mano3);
-                p4.distinguiPunti(mano4);
-                p5.distinguiPunti(mano5);
-
-
-                g1.setPuntoPoker(p1);
-                g2.setPuntoPoker(p2);
-                g3.setPuntoPoker(p3);
-                g4.setPuntoPoker(p4);
-                g5.setPuntoPoker(p5);
-
-                g1.setMano(mano1);
-                g2.setMano(mano2);
-                g3.setMano(mano3);
-                g4.setMano(mano4);
-                g5.setMano(mano5);
+                //Creaiamo il punto-poker
+                for(Giocatore giocatore : giocatori)
+                {
+                    giocatore.puntoPoker =  new PuntoPoker();
+                }
+                
+                //distinguiamo il punto
+                for(Giocatore giocatore : giocatori)
+                {
+                    giocatore.puntoPoker.distinguiPunti(giocatore.getMano());
+                }
                 
 
                 /* Qui verrano mostrtate le carte al giocatore, dovrebbero essere numerate 
@@ -142,23 +126,23 @@ public class InputPoker
                                     {
                                         case "1":
 
-                                            mano1.cambiaCartaGiocatore(mano1.getMano().get(0),mazzo,0);
+                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(0),mazzo,0);
                                             break;
                                         case "2":
 
-                                            mano1.cambiaCartaGiocatore(mano1.getMano().get(1),mazzo,1);
+                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(1),mazzo,1);
                                             break;
                                         case "3":
 
-                                            mano1.cambiaCartaGiocatore(mano1.getMano().get(2),mazzo,2);
+                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(2),mazzo,2);
                                             break;
                                         case "4":
 
-                                            mano1.cambiaCartaGiocatore(mano1.getMano().get(3),mazzo,3);
+                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(3),mazzo,3);
                                             break;
                                         case "5":
 
-                                            mano1.cambiaCartaGiocatore(mano1.getMano().get(4),mazzo,4);
+                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(4),mazzo,4);
                                             break;
                                         default:
 
@@ -172,7 +156,7 @@ public class InputPoker
                                 System.out.println("Input non valido");
                             }
                         }
-                        mano1.mostraMano();
+                        g1.mano.mostraMano();
                         break;   
                     }
                     else if(inputCambio.equals("n"))
@@ -201,17 +185,11 @@ public class InputPoker
                 System.out.println("\nIl tuo ammontale:");
                 System.out.println(g1.getAmmontale());
                 
-                p1.distinguiPunti(mano1);
-                p2.distinguiPunti(mano2);
-                p3.distinguiPunti(mano3);
-                p4.distinguiPunti(mano4);
-                p5.distinguiPunti(mano5);
-
-                g1.setPuntoPoker(p1);
-                g2.setPuntoPoker(p2);
-                g3.setPuntoPoker(p3);
-                g4.setPuntoPoker(p4);
-                g5.setPuntoPoker(p5);
+                //Distinguiamo di nuovo i punti
+               for(Giocatore giocatore : giocatori)
+                {
+                    giocatore.puntoPoker.distinguiPunti(giocatore.getMano());
+                }
                 
                 //Seconda fase di rilancio
                 FaseRilancio.faseRilancio(piatto, giocatori, g1);
@@ -223,15 +201,15 @@ public class InputPoker
                 Giocatore giocatoreVincente = CP.trovaGiocatoreVincente(CP);
 
                 System.out.println("\nGiocatore1");
-                mano1.mostraMano();
+                g1.mano.mostraMano();
                 System.out.println("\nGiocatore2");
-                mano2.mostraMano();
+                g2.mano.mostraMano();
                 System.out.println("\nGiocatore3");
-                mano3.mostraMano();
+                g3.mano.mostraMano();
                 System.out.println("\nGiocatore4");
-                mano4.mostraMano();
+                g4.mano.mostraMano();
                 System.out.println("\nGiocatore5");
-                mano5.mostraMano();
+                g5.mano.mostraMano();
                 
                 System.out.println("\nIl vincitore è:");
                 System.out.println(giocatoreVincente.getNomegiocatore()); 

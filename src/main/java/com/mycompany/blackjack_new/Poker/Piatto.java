@@ -53,7 +53,7 @@ public class Piatto {
         int retvalue = this.ammontalePiatto;
         for(Giocatore giocatore : giocatori)
         {
-            retvalue = retvalue + giocatore.rilancioAuto(giocatore,piatto);
+            retvalue = retvalue + giocatore.rilancioAuto(giocatore,piatto,giocatori);
         }
         this.ammontalePiatto = retvalue;
     }

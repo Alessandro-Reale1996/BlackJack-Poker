@@ -5,6 +5,7 @@
 package com.mycompany.blackjack_new.Poker;
 
 import com.mycompany.blackjack_new.Mano;
+import java.util.ArrayList;
 
 /**
  *
@@ -95,7 +96,7 @@ public class Giocatore implements Comparable<Giocatore> {
     }
    
     //Creo il metodo per il rilancio automatizzato
-    public int rilancioAuto(Giocatore giocatore,Piatto piatto)
+    public int rilancioAuto(Giocatore giocatore,Piatto piatto,ArrayList<Giocatore> giocatori)
     {   
         int retvalue = 0;
         //creo uno switch, con una relazione punti(valore)- ammontale scommesso.
@@ -153,7 +154,7 @@ public class Giocatore implements Comparable<Giocatore> {
                     }
                     else if (giocatore.puntoPoker.valore<2)
                     {
-                        //TODO: metodo fold
+                        fold(giocatori,giocatore);
                     }
                     
             }
@@ -201,7 +202,7 @@ public class Giocatore implements Comparable<Giocatore> {
                     }
                     else if(giocatore.puntoPoker.valore<2)
                     {
-                        //TODO: metodo fold
+                        fold(giocatori,giocatore);
                     }
                     
             }
@@ -254,7 +255,7 @@ public class Giocatore implements Comparable<Giocatore> {
                     }
                     else
                     {
-                        //TODO: metodo fold
+                        fold(giocatori,giocatore);
                     }
                     
             }
@@ -291,7 +292,7 @@ public class Giocatore implements Comparable<Giocatore> {
                     }
                     else if (giocatore.puntoPoker.valore<2)
                     {
-                        //TODO: metodo fold
+                        fold(giocatori,giocatore);
                     }
                     
             }
@@ -323,7 +324,7 @@ public class Giocatore implements Comparable<Giocatore> {
                     }
                     else if (giocatore.puntoPoker.valore<2)
                     {
-                        //TODO: metodo fold
+                       fold(giocatori,giocatore);
                     }
                     
             }
@@ -374,9 +375,9 @@ public class Giocatore implements Comparable<Giocatore> {
         return this.nomegiocatore+" check";
     }
     
-    //TODO: creare metodo Fold
-    public void fold()
+    
+    private void fold(ArrayList<Giocatore> giocatori,Giocatore giocatore)
     {
-        
+        giocatori.remove(giocatore);
     }
 }
