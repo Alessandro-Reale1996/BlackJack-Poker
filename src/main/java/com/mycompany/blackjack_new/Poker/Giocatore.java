@@ -376,7 +376,7 @@ public class Giocatore implements Comparable<Giocatore> {
     }
     
     
-    private void fold(ArrayList<Giocatore> giocatori,Giocatore giocatore)
+    public void fold(ArrayList<Giocatore> giocatori,Giocatore giocatore)
     {
         giocatori.remove(giocatore);
     }

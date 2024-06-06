@@ -12,7 +12,15 @@ import java.util.Scanner;
  * @author gianf
  */
 public class FaseRilancio {
-    public static void faseRilancio(Piatto piatto, ArrayList<Giocatore> giocatori,GiocatoreUmano g1)
+    // proprietà fold
+    protected boolean fold;
+
+    public FaseRilancio() 
+    {
+        this.fold= false;
+    }
+     
+    public void faseRilancio(Piatto piatto, ArrayList<Giocatore> giocatori,GiocatoreUmano g1)
     {
         // Qui si dà la possibilità al giocatore di rilanciare o check 1
         /*TODO: Necessita ancora della possibilità di "foldare" a GiocatoreUmano
@@ -21,7 +29,7 @@ public class FaseRilancio {
                 do
                 {   int count = 0;
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("Vuoi rilanciare o check? r/c");
+                    System.out.println("Vuoi rilanciare, check o fold? r/c/f");
                     String input= scanner.nextLine();
                     switch (input) 
                     {
@@ -61,8 +69,15 @@ public class FaseRilancio {
                                 piatto.setRilancioGeneralePerGiocatore(giocatori);
                             }
                             break;
-                      //case "f":
-                            //Qui va aggiunto il metodo fold()
+                        case "f":
+                            //risposta valida
+                            rispostaValida=true;
+                            
+                            //metodo fold, e fold=true
+                            g1.fold(giocatori, g1);
+                            this.fold= true;
+                            break;
+                        
                         default:
                             System.out.println("imput non valido");
                             break;
@@ -86,7 +101,7 @@ public class FaseRilancio {
                         count++;
                     }
                     
-                }while(!piatto.RilancioGiocatoreUgualeRilancioGenerale(giocatori) || !rispostaValida );
+                }while((!piatto.RilancioGiocatoreUgualeRilancioGenerale(giocatori) || !rispostaValida) && !this.fold );
     }
     
 }

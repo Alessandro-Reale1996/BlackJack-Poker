@@ -95,105 +95,117 @@ public class InputPoker
                 System.out.println(g1.getAmmontale());
 
                 //Prima fase di rilancio
-                FaseRilancio.faseRilancio(piatto, giocatori, g1);
+                FaseRilancio faserilancio = new FaseRilancio();
+                faserilancio.faseRilancio(piatto, giocatori, g1);
 
-                /*Diamo la possibilità di cambiare carta, prima chiedendo di cambiare, poi con uno swich si sceglierà
-                la carta,dovrebbe essere tutto contornato da un ciclo while. 
-                */
-                while(true)
+                //Se il giocatore non ha foldato durante la fase di rilancio.
+                if(!faserilancio.fold)
                 {
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Vuoi cambiare? y/n");
-                    String inputCambio= scanner.nextLine();
-                    if(inputCambio.equals("y"))
+                    /*Diamo la possibilità di cambiare carta, prima chiedendo di cambiare, poi con uno swich si sceglierà
+                    la carta,dovrebbe essere tutto contornato da un ciclo while. 
+                    */
+                    while(true)
                     {
-                        while(true)
+                        Scanner scanner = new Scanner(System.in);
+                        System.out.println("Vuoi cambiare? y/n");
+                        String inputCambio= scanner.nextLine();
+                        if(inputCambio.equals("y"))
                         {
-                            System.out.println("Che carte vuoi cambiare? (la virgola è il carattere separatore)");
-                            inputCambio= scanner.nextLine();
-                            //divido la stirnga e metto il risultato in un Array con un ciclo "for"
-                            StringTokenizer tokenizer = new StringTokenizer(inputCambio,",");
-                            ArrayList<String> arraytokens = new ArrayList<>();
-                            try
+                            while(true)
                             {
-                                for(int i=0;i<tokenizer.countTokens();i++) //Non ho capito perchè il "+2"
+                                System.out.println("Che carte vuoi cambiare? (la virgola è il carattere separatore)");
+                                inputCambio= scanner.nextLine();
+                                //divido la stirnga e metto il risultato in un Array con un ciclo "for"
+                                StringTokenizer tokenizer = new StringTokenizer(inputCambio,",");
+                                ArrayList<String> arraytokens = new ArrayList<>();
+                                try
                                 {
-                                    arraytokens.add(tokenizer.nextToken());
-                                }
-                                for(String tokens : arraytokens)
-                                {
-                                    switch(tokens)
+                                    for(int i=0;i<tokenizer.countTokens();i++) //Non ho capito perchè il "+2"
                                     {
-                                        case "1":
-
-                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(0),mazzo,0);
-                                            break;
-                                        case "2":
-
-                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(1),mazzo,1);
-                                            break;
-                                        case "3":
-
-                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(2),mazzo,2);
-                                            break;
-                                        case "4":
-
-                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(3),mazzo,3);
-                                            break;
-                                        case "5":
-
-                                            g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(4),mazzo,4);
-                                            break;
-                                        default:
-
-                                            break;
+                                        arraytokens.add(tokenizer.nextToken());
                                     }
+                                    for(String tokens : arraytokens)
+                                    {
+                                        switch(tokens)
+                                        {
+                                            case "1":
+
+                                                g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(0),mazzo,0);
+                                                break;
+                                            case "2":
+
+                                                g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(1),mazzo,1);
+                                                break;
+                                            case "3":
+
+                                                g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(2),mazzo,2);
+                                                break;
+                                            case "4":
+
+                                                g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(3),mazzo,3);
+                                                break;
+                                            case "5":
+
+                                                g1.mano.cambiaCartaGiocatore(g1.mano.getMano().get(4),mazzo,4);
+                                                break;
+                                            default:
+
+                                                break;
+                                        }
+                                    }
+                                break;
                                 }
-                            break;
+                                catch(Exception e)
+                                {
+                                    System.out.println("Input non valido");
+                                }
                             }
-                            catch(Exception e)
-                            {
-                                System.out.println("Input non valido");
-                            }
+                            g1.mano.mostraMano();
+                            break;   
                         }
-                        g1.mano.mostraMano();
-                        break;   
+                        else if(inputCambio.equals("n"))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            System.out.println("Input non valido");
+                        }
                     }
-                    else if(inputCambio.equals("n"))
+
+
+                    CambiaCarte cambiaCarte2 = new CambiaCarte();
+                    CambiaCarte cambiaCarte3 = new CambiaCarte();
+                    CambiaCarte cambiaCarte4= new CambiaCarte();
+                    CambiaCarte cambiaCarte5 = new CambiaCarte();
+
+                    cambiaCarte2.cambiaCarte(g2, mazzo);
+                    cambiaCarte3.cambiaCarte(g3, mazzo);
+                    cambiaCarte4.cambiaCarte(g4, mazzo);
+                    cambiaCarte5.cambiaCarte(g5, mazzo);
+
+
+                    //qui si mostra l'ammontale
+                    System.out.println("\nIl tuo ammontale:");
+                    System.out.println(g1.getAmmontale());
+
+                    //Distinguiamo di nuovo i punti
+                   for(Giocatore giocatore : giocatori)
                     {
-                        break;
+                        giocatore.puntoPoker.distinguiPunti(giocatore.getMano());
                     }
-                    else
-                    {
-                        System.out.println("Input non valido");
-                    }
+
+                    //Seconda fase di rilancio
+                    FaseRilancio faserilancio2 = new FaseRilancio();
+                    faserilancio2.faseRilancio(piatto, giocatori, g1);
                 }
-
                 
-                CambiaCarte cambiaCarte2 = new CambiaCarte();
-                CambiaCarte cambiaCarte3 = new CambiaCarte();
-                CambiaCarte cambiaCarte4= new CambiaCarte();
-                CambiaCarte cambiaCarte5 = new CambiaCarte();
-
-                cambiaCarte2.cambiaCarte(g2, mazzo);
-                cambiaCarte3.cambiaCarte(g3, mazzo);
-                cambiaCarte4.cambiaCarte(g4, mazzo);
-                cambiaCarte5.cambiaCarte(g5, mazzo);
-                
-                
-                //qui si mostra l'ammontale
-                System.out.println("\nIl tuo ammontale:");
-                System.out.println(g1.getAmmontale());
-                
-                //Distinguiamo di nuovo i punti
-               for(Giocatore giocatore : giocatori)
+                //se il giocatore ha foldato durante la fase di rilancio
+                else
                 {
-                    giocatore.puntoPoker.distinguiPunti(giocatore.getMano());
+                    FaseRilancioAutomatica.faseRilancioAutomatica(piatto, giocatori);
+                    
                 }
-                
-                //Seconda fase di rilancio
-                FaseRilancio.faseRilancio(piatto, giocatori, g1);
-
                 ConfrontaPunteggio CP = new ConfrontaPunteggio();
 
                 CP.setConfrontapunteggio(giocatori);
