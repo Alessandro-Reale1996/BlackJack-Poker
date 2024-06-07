@@ -16,9 +16,8 @@ public class FaseRilancioAutomatica {
     {
         do
         {
-            for(int i=1; i<giocatori.size(); i++)
-            {
-                giocatori.get(i).rilancioAuto(giocatori.get(i), piatto, giocatori);
+            for(Giocatore giocatore : giocatori){
+                giocatore.rilancioAuto(giocatore, piatto, giocatori);
                 piatto.setRilancioGeneralePerGiocatore(giocatori);
 
             }

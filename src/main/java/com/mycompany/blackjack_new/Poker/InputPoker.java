@@ -211,17 +211,15 @@ public class InputPoker
                 CP.setConfrontapunteggio(giocatori);
 
                 Giocatore giocatoreVincente = CP.trovaGiocatoreVincente(CP);
-
-                System.out.println("\nGiocatore1");
-                g1.mano.mostraMano();
-                System.out.println("\nGiocatore2");
-                g2.mano.mostraMano();
-                System.out.println("\nGiocatore3");
-                g3.mano.mostraMano();
-                System.out.println("\nGiocatore4");
-                g4.mano.mostraMano();
-                System.out.println("\nGiocatore5");
-                g5.mano.mostraMano();
+                
+                //mostriamo le mani dei giocatori ancora in gioco
+                for(Giocatore giocatore : giocatori)
+                {
+                    System.out.println("\n"+giocatore.nomegiocatore);
+                    giocatore.mano.mostraMano();
+                }
+                
+                
                 
                 System.out.println("\nIl vincitore è:");
                 System.out.println(giocatoreVincente.getNomegiocatore()); 
